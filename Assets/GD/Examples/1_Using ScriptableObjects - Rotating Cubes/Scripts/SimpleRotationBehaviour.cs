@@ -6,24 +6,6 @@ using UnityEngine;
 public class SimpleRotationBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private RotationParameters rotationParameters;
-
-    [SerializeField]
-    private Space rotationSpace;
-
-    // Update is called every frame, if the MonoBehaviour is enabled
-    private void Update()
-    {
-        gameObject.transform.Rotate(rotationParameters.RotationAxis,
-            rotationParameters.RotationAngle,
-            rotationSpace);
-    }
-}
-
-/*
- public class SimpleRotationBehaviour : MonoBehaviour
-{
-    [SerializeField]
     private Vector3 rotatationAxis;
 
     [SerializeField]
@@ -39,4 +21,3 @@ public class SimpleRotationBehaviour : MonoBehaviour
             rotationSpace);
     }
 }
- */
