@@ -5,13 +5,38 @@ using UnityEngine;
 /// </summary>
 public class SimpleRotationBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
+    [SerializeField]
+    private RotationParameters rotationParameters;
 
-    // Update is called once per frame
+    [SerializeField]
+    private Space rotationSpace;
+
+    // Update is called every frame, if the MonoBehaviour is enabled
     private void Update()
     {
+        gameObject.transform.Rotate(rotationParameters.RotationAxis,
+            rotationParameters.RotationAngle,
+            rotationSpace);
     }
 }
+
+/*
+ public class SimpleRotationBehaviour : MonoBehaviour
+{
+    [SerializeField]
+    private Vector3 rotatationAxis;
+
+    [SerializeField]
+    private float rotationAngleInDegs;
+
+    [SerializeField]
+    private Space rotationSpace;
+
+    // Update is called every frame, if the MonoBehaviour is enabled
+    private void Update()
+    {
+        gameObject.transform.Rotate(rotatationAxis, rotationAngleInDegs,
+            rotationSpace);
+    }
+}
+ */
