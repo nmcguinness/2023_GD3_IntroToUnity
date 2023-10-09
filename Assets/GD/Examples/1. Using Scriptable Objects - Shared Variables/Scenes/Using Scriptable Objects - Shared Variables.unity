@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 1511857885}
   - component: {fileID: 1511857889}
   - component: {fileID: 1511857890}
+  - component: {fileID: 1511857891}
   m_Layer: 0
   m_Name: Orc - Not So Aggressive
   m_TagString: Untagged
@@ -732,8 +733,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0853ab28cc5463c4abe18edc1a12a739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationParameters: {fileID: 11400000, guid: afb6ae2dbfe65864fba3d8606edabaa7, type: 2}
+  rotationAngle:
+    UseConstant: 1
+    ConstantValue: 2
+    Variable: {fileID: 11400000, guid: 7cddea53cf06579419dc2d2c4be9433c, type: 2}
+  rotationAxis:
+    UseConstant: 1
+    ConstantValue: {x: 0, y: 1, z: 0}
+    Variable: {fileID: 11400000, guid: 6a666f6311c103a4ca523995978f8447, type: 2}
   rotationSpace: 0
+--- !u!114 &1511857891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511857884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc248fbecacd9f54fa2212f5d213df55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConsumableData: {fileID: 11400000, guid: 2a71a6dc4bba31c4a915b28e497ef014, type: 2}
 --- !u!1 &1686327511
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +889,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0853ab28cc5463c4abe18edc1a12a739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationParameters: {fileID: 11400000, guid: f928000c10df8df4ab89ea01177205cd, type: 2}
+  rotationAngle:
+    UseConstant: 1
+    ConstantValue: 5
+    Variable: {fileID: 11400000, guid: 7cddea53cf06579419dc2d2c4be9433c, type: 2}
+  rotationAxis:
+    UseConstant: 1
+    ConstantValue: {x: 1, y: 0, z: 0}
+    Variable: {fileID: 11400000, guid: 6a666f6311c103a4ca523995978f8447, type: 2}
   rotationSpace: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

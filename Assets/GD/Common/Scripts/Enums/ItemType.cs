@@ -6,6 +6,7 @@
     /// <see cref="Objects.BaseObjectData"/>
     public enum ItemType : sbyte
     {
-        Building, Equipment, Food, Medicine, PC, NPC, Player, Story, Weapon
+        Building, Equipment, Food, Medicine, PC, NPC, Player, Story, Weapon,
+        Portal
     }
 }

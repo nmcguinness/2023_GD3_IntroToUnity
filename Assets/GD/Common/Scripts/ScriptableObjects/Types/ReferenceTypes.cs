@@ -61,7 +61,17 @@ namespace GD
     public class FloatReference : BaseReference<float>
     {
         public FloatVariable Variable;
+
+        //property, ternary (?,:), expression bodied member
         public float Value => UseConstant ? ConstantValue : Variable.Value;
+
+        //public float Value
+        //{
+        //    get
+        //    {
+        //        return UseConstant ? ConstantValue : Variable.Value;
+        //    }
+        //}
     }
 
     [System.Serializable]
