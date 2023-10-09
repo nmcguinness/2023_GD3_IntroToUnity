@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: Vector3Variable
   m_EditorClassIdentifier: 
   Description: 
-  usedBy: 0
-  lastUpdate: 09/10/23
   Value: {x: 0, y: 0, z: 0}
