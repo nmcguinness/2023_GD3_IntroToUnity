@@ -3,7 +3,7 @@
 /// <summary>
 /// Stores data relating to a level objective
 /// </summary>
-/// <see cref="ARVR.ScriptableTypes.RuntimeGameObjectiveList"/>
+/// <see cref="GD.ScriptableTypes.RuntimeGameObjectiveList"/>
 namespace GD
 {
     [CreateAssetMenu(fileName = "GameObjective", menuName = "DkIT/Scriptable Objects/Game/Objective")]
