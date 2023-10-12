@@ -24,17 +24,18 @@ elements (events, states, animation, input) for this module.
 ## Table of Contents - Design Patterns 
 | Topic | Description | Additional Reading |
 | :---------------- | :--------------- | :--------------- | 
-| Abstract Factory | Using the Abstract Factory pattern to make interchangeable components | [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) |
-| Strategy | Using the Strategy pattern to separate interchangeable algorithms into components accessed through a context | [Strategy](https://refactoring.guru/design-patterns/strategy) |
+| Abstract Factory | Using the Abstract Factory pattern to make interchangeable components | ICollectible, IInteractable, [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) |
+| Strategy | Using the Strategy pattern to separate interchangeable algorithms into components accessed through a context | SelectionManager, [Strategy](https://refactoring.guru/design-patterns/strategy) |
+| Observer | Using the Observer pattern to notify game event subscribers | GameEvent, [Observer](https://refactoring.guru/design-patterns/observer) |
 
 ### To Do - Week 3
 - [x] Scriptable Objects - Add a demo to demonstrate a centrally modified game variable
 
 ### To Do - Week 4
-- [ ] Discuss generic classes - see [Intro to C#](https://github.com/nmcguinness/2023_GD3_IntroToCSharp.git)
-- [ ] Scriptable Objects - Add a local/remote reference variable demo
-- [ ] Scriptable Objects - Add a framework for interactable, consumable, game, and level data
-- [ ] Add Extensions demo (see Vector3Extensions)
-- [ ] Add Editor tools (inspector lock, folder generation)
-- [ ] Add a SimpleSelectionManager as a starting point to discuss Abstract Factory and Strategy patterns
+- [x] Discuss generic classes - see [Intro to C#](https://github.com/nmcguinness/2023_GD3_IntroToCSharp.git)
+- [x] Scriptable Objects - Add a local/remote reference variable demo
+- [x] Scriptable Objects - Add a framework for interactable, consumable, game, and level data
+- [x] Add Editor tools (inspector lock, folder generation)
+- [x] Add a SimpleSelectionManager as a starting point to discuss Abstract Factory and Strategy patterns
 - [ ] Apply Abstract Factory and Strategy patterns to make an improved SelectionManager
+- [ ] Add Extensions demo (see Vector3Extensions)

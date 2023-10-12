@@ -25,9 +25,6 @@ namespace GD
         [SerializeField]
         private GameObject highlightResponse;
 
-        [SerializeField]
-        private Vector3 positionOffset;
-
         private void Awake()
         {
             selectableTag = selectableTag.Trim();
@@ -61,7 +58,7 @@ namespace GD
                 {
                     //highlight the object
                     highlightResponseController.SetActive(true);
-                    highlightResponseController.SetPosition(currentSelection.position + positionOffset);
+                    highlightResponseController.SetPosition(currentSelection.position);
 
                     oldSelection = currentSelection;
                 }
