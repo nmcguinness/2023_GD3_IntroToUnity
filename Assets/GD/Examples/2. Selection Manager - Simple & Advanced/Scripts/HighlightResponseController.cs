@@ -9,6 +9,23 @@ public class HighlightResponseController : MonoBehaviour
     [SerializeField]
     private Vector3 positionOffset;
 
+    [SerializeField]
+    [Range(0.01f, 0.12f)]
+    private float scaleFactor;
+
+    [SerializeField]
+    [Range(-10, 10)]
+    private float angularSpeed;
+
+    //[SerializeField]
+    //[Range(0, 4)]
+    //private float userTimeScale;
+
+    //private void Awake()
+    //{
+    //      Time.timeScale = userTimeScale;
+    //}
+
     public void SetPosition(Vector3 position)
     {
         gameObject.transform.position = position + positionOffset;
@@ -19,8 +36,9 @@ public class HighlightResponseController : MonoBehaviour
         gameObject.SetActive(isActive);
     }
 
-    private void Update()
+    private void Update() //60Hz -> 16ms
     {
-        //gameObject.transform.localScale = scale * Vector3.one;
+        var scale = scaleFactor * Mathf.Sin(angularSpeed * Time.time) + 1;
+        gameObject.transform.localScale = scale * Vector3.one;
     }
 }
