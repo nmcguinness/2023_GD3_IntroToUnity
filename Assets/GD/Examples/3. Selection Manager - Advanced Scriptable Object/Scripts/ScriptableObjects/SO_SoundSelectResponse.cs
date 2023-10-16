@@ -1,8 +1,10 @@
 using GD.Selection;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SO_SoundSelectionResponse",
     menuName = "DkIT/Scriptable Objects/Responses/Sound")]
+[Serializable]
 public class SO_SoundSelectionResponse : ScriptableObject, ISelectionResponse
 {
     [SerializeField]

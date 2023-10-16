@@ -7,9 +7,13 @@ using UnityEngine;
 /// </summary>
 public class MultipleSelectionManager : MonoBehaviour
 {
-    private IRayProvider rayProvider;
-    private ISelector selector;
+    [SerializeField]
     private List<ISelectionResponse> selectionResponses;
+
+    //internal vars
+    private IRayProvider rayProvider;
+
+    private ISelector selector;
     private Transform currentSelection;
 
     private void Awake()

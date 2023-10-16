@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickRateMultiplierType: 1
-  alternateColor: {r: 1, g: 0, b: 0, a: 1}
+  alternateColor: {r: 0.830163, g: 0, b: 1, a: 1}
 --- !u!1 &91288944
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b979d38bd8aec2343a46d34eff3f53e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickRateMultiplierType: 4
+  tickRateMultiplierType: 2
   alternateColor: {r: 0.9505143, g: 0, b: 1, a: 0}
 --- !u!136 &672745125
 CapsuleCollider:
@@ -918,8 +918,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177436024}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.04638844, y: -0.06359112, z: 0.0029702499, w: -0.9968929}
-  m_LocalPosition: {x: 2.017379, y: 5.5514994, z: -8.944389}
+  m_LocalRotation: {x: -0.076424696, y: -0.0026971214, z: 0.00020597316, w: -0.9970717}
+  m_LocalPosition: {x: 1.3612107, y: 5.8293824, z: -12.530552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
