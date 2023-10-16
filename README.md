@@ -27,6 +27,7 @@ elements (events, states, animation, input) for this module.
 | Abstract Factory | Using the Abstract Factory pattern to make interchangeable components | ICollectible, IInteractable, [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) |
 | Strategy | Using the Strategy pattern to separate interchangeable algorithms into components accessed through a context | SelectionManager, [Strategy](https://refactoring.guru/design-patterns/strategy) |
 | Observer | Using the Observer pattern to notify game event subscribers | GameEvent, [Observer](https://refactoring.guru/design-patterns/observer) |
+| Singleton | Using the Singleton pattern to prevent more than one entity from being instantiated | TimeTickSystem, InventoryManager, GameManager, [Singleton](https://refactoring.guru/design-patterns/singleton) | 
 
 ### To Do - Week 3
 - [x] Scriptable Objects - Add a demo to demonstrate a centrally modified game variable
@@ -37,5 +38,9 @@ elements (events, states, animation, input) for this module.
 - [x] Scriptable Objects - Add a framework for interactable, consumable, game, and level data
 - [x] Add Editor tools (inspector lock, folder generation)
 - [x] Add a SimpleSelectionManager as a starting point to discuss Abstract Factory and Strategy patterns
+
+
+### To Do - Week 5
 - [ ] Apply Abstract Factory and Strategy patterns to make an improved SelectionManager
+- [ ] Add Singleton pattern demo (see TimeTickSystem. InventoryManager)
 - [ ] Add Extensions demo (see Vector3Extensions)

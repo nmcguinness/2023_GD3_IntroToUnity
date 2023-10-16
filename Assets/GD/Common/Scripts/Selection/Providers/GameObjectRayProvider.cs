@@ -8,7 +8,13 @@ namespace GD.Selection
         [Tooltip("Normally set to the in-game player game object")]
         private GameObject rayOrigin;
 
-        private float gizmoRayLength = 20;
+        [SerializeField]
+        private Color rayColor;
+
+        [SerializeField]
+        [Range(1, 100)]
+        private float rayLength = 20;
+
         private Ray ray;
 
         public Ray CreateRay()
@@ -19,10 +25,8 @@ namespace GD.Selection
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.black;
-            Gizmos.DrawRay(ray);
-            //Gizmos.DrawLine(ray.origin,
-            //    ray.origin + gizmoRayLength * ray.direction);
+            Gizmos.color = rayColor;
+            Gizmos.DrawLine(ray.origin, ray.origin + rayLength * ray.direction);
         }
     }
 }

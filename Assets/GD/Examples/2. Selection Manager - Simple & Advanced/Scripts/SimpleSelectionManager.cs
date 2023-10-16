@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GD
+namespace GD.Examples
 {
     public class SimpleSelectionManager : MonoBehaviour
     {

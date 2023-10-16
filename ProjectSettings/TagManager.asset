@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ammo
+  - Interactable
+  - Consumable
   layers:
   - Default
   - TransparentFX
@@ -11,14 +14,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Consumable
+  - Interactable
+  - Selectable
+  - Environment
+  - Props
+  - Architecture
+  - Player
+  - Lighting
   - 
   - 
   - 
