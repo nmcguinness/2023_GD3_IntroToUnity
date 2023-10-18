@@ -11,9 +11,7 @@ public class AdvancedSelectionManager : MonoBehaviour
     [RequireInterface(typeof(ISelectionResponse))]
     private List<ScriptableObject> selectionResponses;
 
-    //internal vars
     private IRayProvider rayProvider;
-
     private ISelector selector;
     private Transform currentSelection;
 
@@ -21,6 +19,15 @@ public class AdvancedSelectionManager : MonoBehaviour
     {
         rayProvider = GetComponent<IRayProvider>();
         selector = GetComponent<ISelector>();
+
+        //check if each in the list is a ISelectReponse, if not remove
+        //foreach (ScriptableObject selectionResponse in selectionResponses)
+        //{
+        //    if (!(selectionResponse is ISelectionResponse))
+        //    {
+        //        selectionResponses.Remove(selectionResponse);
+        //    }
+        //}
     }
 
     private void Update()

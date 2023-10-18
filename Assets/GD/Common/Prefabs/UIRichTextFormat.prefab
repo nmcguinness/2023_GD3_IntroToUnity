@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5085639210423629140}
   - component: {fileID: 3427456118869553909}
   m_Layer: 0
-  m_Name: Example Info
+  m_Name: UIRichTextFormat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -29,6 +29,10 @@ namespace GD
         private void OnGUI()
         {
             GUI.Label(textPosition, text, guiStyle);
+
+            //lets find out the dimensions of the drawn text
+            var dimensions = guiStyle.CalcSize(new GUIContent(text));
+            GUI.Label(new Rect(20, 40, 200, 20), $"Dims: {dimensions}", guiStyle);
         }
     }
 }
