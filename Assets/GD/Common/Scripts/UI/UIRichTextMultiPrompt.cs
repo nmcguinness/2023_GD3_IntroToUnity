@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class UIPrompt
 {
+    #region Fields
+
     [SerializeField]
     [TextArea(1, 3)]
     private string text;
@@ -16,7 +18,28 @@ public class UIPrompt
     [SerializeField]
     private bool isBold;
 
-    //italic, color
+    [SerializeField]
+    [ReadOnly]
+    private Vector2 dimensions;
+
+    [SerializeField]
+    [ReadOnly]
+    private string promptAsString;
+
+    #endregion Fields
+
+    #region Properties
+
+    public string Text { get => text; set => text = value.Trim(); }
+
+    public int FontSize { get => fontSize; set => fontSize = value; }
+    public bool IsBold { get => isBold; set => isBold = value; }
+    public Vector2 Dimensions { get => dimensions; }
+    public string PromptAsString { get => promptAsString; }
+
+    #endregion Properties
+
+    #region Constructors
 
     public UIPrompt(string text, int fontSize) : this(text, fontSize, false)
     {
@@ -29,9 +52,19 @@ public class UIPrompt
         IsBold = isBold;
     }
 
-    public string Text { get => text; set => text = value.Trim(); }
-    public int FontSize { get => fontSize; set => fontSize = value; }
-    public bool IsBold { get => isBold; set => isBold = value; }
+    #endregion Constructors
+
+    public void Initialize(GUIStyle guiStyle)
+    {
+        dimensions = guiStyle.CalcSize(new GUIContent(text));
+        GetPromptAsString();
+    }
+
+    public void GetPromptAsString()
+    {
+        //TODO - add code to wrap bold and italic, set size, and color
+        promptAsString = $"";
+    }
 }
 
 /// <summary>
@@ -60,6 +93,15 @@ public class UIRichTextMultiPrompt : MonoBehaviour
     {
         guiStyle = new GUIStyle();
         guiStyle.richText = true;
+
+        //set dimensions on all UIPrompt
+        InitializePrompts(guiStyle);
+    }
+
+    private void InitializePrompts(GUIStyle guiStyle)
+    {
+        foreach (var prompt in prompts)
+            prompt.Initialize(guiStyle);
     }
 
     private void OnGUI()
