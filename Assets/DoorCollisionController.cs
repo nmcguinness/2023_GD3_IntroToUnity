@@ -11,4 +11,8 @@ public class DoorCollisionController : MonoBehaviour
     {
         onTriggerEnter?.Invoke();
     }
+
+    //DELEGATE
+
+    //EVENT
 }

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace GD.ScriptableTypes
+namespace GD
 {
-    [CreateAssetMenu(fileName = "GameObjectVariable", menuName = "DkIT/Scriptable Objects/Variables/Game Object")]
+    [CreateAssetMenu(fileName = "GameObjectVariable", menuName = "DkIT/Scriptable Objects/Types/Variables/Game Object", order = 7)]
     public class GameObjectVariable : ScriptableDataType<GameObject>
     {
         public void Set(GameObjectVariable a)

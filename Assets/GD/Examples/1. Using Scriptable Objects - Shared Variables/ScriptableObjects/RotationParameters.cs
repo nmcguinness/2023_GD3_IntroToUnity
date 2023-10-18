@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RotationParameters",
-    menuName = "DkIT/Scriptable Objects/Parameters/Rotation")]
+    menuName = "DkIT/Scriptable Objects/Other/Parameters/Rotation")]
 public class RotationParameters : ScriptableObject
 {
     public float RotationAngle;

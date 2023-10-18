@@ -20,6 +20,7 @@ elements (events, states, animation, input) for this module.
 | :---------------- | :--------------- | :--------------- | 
 | Exercise 1 - Scriptable Objects | Sharing variables across multiple game objects using ScriptableObjects (SOs) | See RotationBehaviour and Variables in Common/Scripts/ScriptableObjects |
 | Exercise 2 - Selecting Objects  & Design Patterns | Writing a better SelectionManager using Design Patterns (Abstract Factory, Strategy) | See SelectionManager and SimpleSelectionManager |
+| Exercise 3 - Advanced Scriptable Objects | Writing an AdvancedSelectionManager capable of multiple responses (configurable using SOs) | AdvancedSelectionManager, [Writing Unity attributes and property drawers](https://www.youtube.com/watch?v=r3nwTGLHygI)
 
 ## Table of Contents - Design Patterns 
 | Topic | Description | Additional Reading |
@@ -39,8 +40,12 @@ elements (events, states, animation, input) for this module.
 - [x] Add Editor tools (inspector lock, folder generation)
 - [x] Add a SimpleSelectionManager as a starting point to discuss Abstract Factory and Strategy patterns
 
-
 ### To Do - Week 5
-- [ ] Apply Abstract Factory and Strategy patterns to make an improved SelectionManager
-- [ ] Add Singleton pattern demo (see TimeTickSystem. InventoryManager)
-- [ ] Add Extensions demo (see Vector3Extensions)
+- [x] Apply Abstract Factory and Strategy patterns to make an improved SelectionManager
+- [x] Use SOs to make an AdvancedSelectionManager
+- [x] Add a RequireInterface attribute 
+- [ ] Exercise: Modify UIRichTextPrompt to support multi-line output (see Exercise 1: Multi Text Rich Prompt - Using OnGUI)
+- [ ] Exercise: Add Singleton pattern demo (see Exercise 2: Simple Inventory - Inventory and Singletons)
+- [ ] Explain SerializableDictionary and demonstrate its use in InventoryManager 
+- [ ] Explain GameEvent and GameEventListener
+- [ ] Add Extensions demo (see Vector3Extensions)   

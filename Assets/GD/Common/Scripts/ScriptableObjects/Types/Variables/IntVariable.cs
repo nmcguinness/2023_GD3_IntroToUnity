@@ -2,7 +2,7 @@
 
 namespace GD
 {
-    [CreateAssetMenu(fileName = "IntVariable", menuName = "DkIT/Scriptable Objects/Variables/Int")]
+    [CreateAssetMenu(fileName = "IntVariable", menuName = "DkIT/Scriptable Objects/Types/Variables/Int", order = 2)]
     public class IntVariable : ScriptableDataType<int>
     {
         public void Add(IntVariable a)

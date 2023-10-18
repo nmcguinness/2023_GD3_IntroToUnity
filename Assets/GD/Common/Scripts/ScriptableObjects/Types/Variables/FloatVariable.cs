@@ -3,7 +3,7 @@
 namespace GD
 {
     [CreateAssetMenu(fileName = "FloatVariable",
-        menuName = "DkIT/Scriptable Objects/Variables/Float")]
+        menuName = "DkIT/Scriptable Objects/Types/Variables/Float", order = 3)]
     public class FloatVariable : ScriptableDataType<float>
     {
         public void Add(FloatVariable a)
