@@ -5,85 +5,80 @@ using UnityEngine;
 [Serializable]
 public class UIPrompt
 {
-    #region Fields
+    private static readonly Color DefaultColor = Color.black;
 
     [SerializeField]
-    [TextArea(1, 3)]
-    private string text;
+    [TextArea(1, 2)]
+    private string text = "";
 
     [SerializeField]
-    [Range(8, 18)]
-    private int fontSize;
+    [ColorUsage(true)]
+    private Color color = DefaultColor;
+
+    [SerializeField]
+    [Range(0, 36)]
+    private int size = 14;
 
     [SerializeField]
     private bool isBold;
 
     [SerializeField]
-    [ReadOnly]
+    private bool isItalic;
+
+    [SerializeField, ReadOnly]
     private Vector2 dimensions;
-
-    [SerializeField]
-    [ReadOnly]
-    private string promptAsString;
-
-    #endregion Fields
-
-    #region Properties
-
-    public string Text { get => text; set => text = value.Trim(); }
-
-    public int FontSize { get => fontSize; set => fontSize = value; }
-    public bool IsBold { get => isBold; set => isBold = value; }
-    public Vector2 Dimensions { get => dimensions; }
-    public string PromptAsString { get => promptAsString; }
-
-    #endregion Properties
 
     #region Constructors
 
-    public UIPrompt(string text, int fontSize) : this(text, fontSize, false)
+    public UIPrompt(string text, int size)
+        : this(text, size, DefaultColor, false, false)
     {
     }
 
-    public UIPrompt(string text, int fontSize, bool isBold)
+    public UIPrompt(string text, int size, Color color)
+        : this(text, size, color, false, false)
+    {
+    }
+
+    public UIPrompt(string text, int size, Color color, bool isBold, bool isItalic)
     {
         Text = text;
-        FontSize = fontSize;
+        Size = size;
+        Color = color;
         IsBold = isBold;
+        IsItalic = isItalic;
     }
 
     #endregion Constructors
 
+    public string Text { get => text; set => text = value.Trim(); }
+    public int Size { get => size; set => size = value; }
+    public Color Color { get => color; set => color = value; }
+    public bool IsBold { get => isBold; set => isBold = value; }
+    public bool IsItalic { get => isItalic; set => isItalic = value; }
+    public Vector2 Dimensions { get => dimensions; }
+
     public void Initialize(GUIStyle guiStyle)
     {
         dimensions = guiStyle.CalcSize(new GUIContent(text));
-        GetPromptAsString();
     }
 
-    public void GetPromptAsString()
+    public override string ToString()
     {
-        //TODO - add code to wrap bold and italic, set size, and color
-        promptAsString = $"";
+        return $"{(isItalic ? "<i>" : "")}{(isBold ? "<b>" : "")}<color=#{ColorUtility.ToHtmlStringRGBA(color)}><size={size}>{Text}</size></color>{(isBold ? "</b>" : "")}{(isItalic ? "</i>" : "")}";
     }
 }
 
-/// <summary>
-/// Provides the designer/developer with the ability to show multiple lines
-/// of text on the GUI where each line has a separate format (i.e., color, size, b/i/u)
-/// </summary>
-/// <see cref="GD.UIRichTextPrompt"/>
-/// <seealso cref="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/StyledText.html"/>
-/// <seealso cref="https://docs.unity3d.com/ScriptReference/GUIStyle-margin.html"/>
 public class UIRichTextMultiPrompt : MonoBehaviour
 {
-    [Header("Position & Offset")]
     [SerializeField]
+    [Tooltip("Top left corner position (in pixels) of the first prompt")]
     private Vector2 startPosition = new Vector2(20, 20);
 
     [SerializeField]
-    private Vector2 textOffset = new Vector2(0, 20);
+    [Tooltip("X/Y separation (in pixels) between each prompt")]
+    private Vector2 textOffset = new Vector2(0, 10);
 
-    [Header("Prompts")]
     [SerializeField]
     private List<UIPrompt> prompts;
 
@@ -94,29 +89,25 @@ public class UIRichTextMultiPrompt : MonoBehaviour
         guiStyle = new GUIStyle();
         guiStyle.richText = true;
 
-        //set dimensions on all UIPrompt
-        InitializePrompts(guiStyle);
+        InitializePrompts();
     }
 
-    private void InitializePrompts(GUIStyle guiStyle)
+    /// <summary>
+    /// Sets dimensions based on text and GUIStyle
+    /// </summary>
+    private void InitializePrompts()
     {
-        foreach (var prompt in prompts)
+        foreach (UIPrompt prompt in prompts)
             prompt.Initialize(guiStyle);
     }
 
     private void OnGUI()
     {
-        var numberOfLines = 0;
-        foreach (var prompt in prompts)
+        var count = 0;
+        foreach (UIPrompt prompt in prompts)
         {
-            //calc its corner
-            var corner = startPosition + numberOfLines * textOffset;
-            //calc its dims
-            var dimensions = guiStyle.CalcSize(new GUIContent(prompt.Text));
-            //calc its rect
-            var textPosition = new Rect(corner.x, corner.y, dimensions.x, dimensions.y);
-            GUI.Label(textPosition, prompt.Text, guiStyle);
-            numberOfLines++;
+            var corner = startPosition + textOffset * count++;
+            GUI.Label(new Rect(corner, prompt.Dimensions), prompt.ToString(), guiStyle);
         }
     }
 }

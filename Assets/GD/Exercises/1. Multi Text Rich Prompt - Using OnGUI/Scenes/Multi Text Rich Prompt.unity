@@ -123,80 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &258179351
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 224545935111135361, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_Name
-      value: Example Info
-      objectReference: {fileID: 0}
-    - target: {fileID: 3427456118869553909, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: text
-      value: <b><size=14><color=white>Develop a UIRichTextMultiPrompt class to enable
-        multi-line GUI text output</color></size></b>
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.7465456
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.0815458
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.1368312
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 40ed0016cf1540246a04608741104275, type: 3}
 --- !u!1 &560844169
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,8 +240,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -344,7 +270,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 560844169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a480749de51de4b4cbc75c4a2a1afbc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fee3f7dd64f0964f834feda5b02f20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &802258779
@@ -603,11 +529,129 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223481857}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1341388603
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224545935111135361, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_Name
+      value: Example Info
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7465456
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.0815458
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.1368312
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085639210423629140, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3427456118869553909, guid: 40ed0016cf1540246a04608741104275, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 224545935111135361, guid: 40ed0016cf1540246a04608741104275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1512055326}
+  m_SourcePrefab: {fileID: 100100000, guid: 40ed0016cf1540246a04608741104275, type: 3}
+--- !u!1 &1512055325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 224545935111135361, guid: 40ed0016cf1540246a04608741104275,
+    type: 3}
+  m_PrefabInstance: {fileID: 1341388603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1512055326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512055325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4dad05a24cfaa64e939b3c5f35a7278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: 20, y: 20}
+  textOffset: {x: 0, y: 30}
+  prompts:
+  - text: 'Objectives:'
+    color: {r: 0, g: 0, b: 0, a: 1}
+    size: 20
+    isBold: 0
+    isItalic: 0
+    dimensions: {x: 66, y: 14.333333}
+  - text: '- Find the key'
+    color: {r: 1, g: 0, b: 0, a: 1}
+    size: 18
+    isBold: 0
+    isItalic: 0
+    dimensions: {x: 80, y: 14.333333}
+  - text: '- Escape the dungeon'
+    color: {r: 0, g: 1, b: 0.28931952, a: 0.49019608}
+    size: 18
+    isBold: 0
+    isItalic: 0
+    dimensions: {x: 127, y: 14.333333}
+  - text: '- Kill Count Dracula'
+    color: {r: 0, g: 0.12409544, b: 1, a: 0.24313726}
+    size: 18
+    isBold: 0
+    isItalic: 1
+    dimensions: {x: 112, y: 14.333333}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 258179351}
+  - {fileID: 1341388603}
   - {fileID: 560844172}
   - {fileID: 802258781}
   - {fileID: 1030379176}
