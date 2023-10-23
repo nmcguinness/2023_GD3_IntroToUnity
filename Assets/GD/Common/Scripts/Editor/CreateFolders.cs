@@ -14,9 +14,6 @@ namespace GD
     {
         private static string projectName = "My Game Goes Here";
 
-        [SerializeField]
-        public static List<string> folders = new List<string>() { "Scenes", "Scripts", "Data", "Animation", "Audio", "Materials", "Meshes", "Prefabs", "Textures", "Sprites" };
-
         [MenuItem("Tools/DkIT/Utils/Create project folders...")]
         private static void ShowProjectPopup()
         {
@@ -40,8 +37,7 @@ namespace GD
             "Scripts",
             "Scenes",
             "Shaders",
-            "Textures",
-            "UI",
+            "Textures"
         };
 
             foreach (string folder in folders)

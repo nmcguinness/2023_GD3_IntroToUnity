@@ -10,11 +10,11 @@ public class FlickerController : MonoBehaviour
     [Range(0.01f, 100)]
     private float timeDelay;
 
-    private Light light;
+    private Light currentLight;
 
     private void Awake()
     {
-        light = gameObject.GetComponent<Light>();
+        currentLight = gameObject.GetComponent<Light>();
     }
 
     private void Update()
@@ -28,12 +28,12 @@ public class FlickerController : MonoBehaviour
     private IEnumerator FlickerLight()
     {
         IsFlickering = true;
-        light.enabled = false;
-        light.intensity = 0.5f;
+        currentLight.enabled = false;
+        currentLight.intensity = 0.5f;
         timeDelay = Random.Range(0.01f, 0.1f);
         yield return new WaitForSeconds(timeDelay);
-        light.enabled = true;
-        light.intensity = 1f;
+        currentLight.enabled = true;
+        currentLight.intensity = 1f;
         timeDelay = Random.Range(0.01f, 0.1f);
         yield return new WaitForSeconds(timeDelay);
         IsFlickering = false;

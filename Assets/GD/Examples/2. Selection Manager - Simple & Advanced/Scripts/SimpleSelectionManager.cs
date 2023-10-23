@@ -19,10 +19,6 @@ namespace GD.Examples
         private AudioClip onMouseOverAudio;
 
         [SerializeField]
-        [Range(0, 1)]
-        private float clipVolume = 1;
-
-        [SerializeField]
         private GameObject highlightResponse;
 
         private void Awake()
