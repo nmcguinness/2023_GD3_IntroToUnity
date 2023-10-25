@@ -16,14 +16,14 @@ elements (events, states, animation, input) for this module.
 - [Three Ways to Architect Your Game With Scriptableobjects](https://unity.com/how-to/architect-game-code-scriptable-objects)
 
 ## Table of Contents - Examples 
-| Topic | Description | Additional Reading |
+| Topic | Description | Recommended Reading |
 | :---------------- | :--------------- | :--------------- | 
 | Exercise 1 - Scriptable Objects | Sharing variables across multiple game objects using ScriptableObjects (SOs) | See RotationBehaviour and Variables in Common/Scripts/ScriptableObjects |
 | Exercise 2 - Selecting Objects  & Design Patterns | Writing a better SelectionManager using Design Patterns (Abstract Factory, Strategy) | See SelectionManager and SimpleSelectionManager |
 | Exercise 3 - Advanced Scriptable Objects | Writing an AdvancedSelectionManager capable of multiple responses (configurable using SOs) | AdvancedSelectionManager, [Writing Unity attributes and property drawers](https://www.youtube.com/watch?v=r3nwTGLHygI)
 
 ## Table of Contents - Design Patterns 
-| Topic | Description | Additional Reading |
+| Topic | Description | Recommended Reading |
 | :---------------- | :--------------- | :--------------- | 
 | Abstract Factory | Using the Abstract Factory pattern to make interchangeable components | [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) |
 | Strategy | Using the Strategy pattern to separate interchangeable algorithms into components accessed through a context | [Strategy](https://refactoring.guru/design-patterns/strategy) |
