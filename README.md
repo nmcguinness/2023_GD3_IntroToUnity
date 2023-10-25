@@ -25,10 +25,10 @@ elements (events, states, animation, input) for this module.
 ## Table of Contents - Design Patterns 
 | Topic | Description | Additional Reading |
 | :---------------- | :--------------- | :--------------- | 
-| Abstract Factory | Using the Abstract Factory pattern to make interchangeable components | ICollectible, IInteractable, [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) |
-| Strategy | Using the Strategy pattern to separate interchangeable algorithms into components accessed through a context | SelectionManager, [Strategy](https://refactoring.guru/design-patterns/strategy) |
-| Observer | Using the Observer pattern to notify game event subscribers | GameEvent, [Observer](https://refactoring.guru/design-patterns/observer) |
+| Abstract Factory | Using the Abstract Factory pattern to make interchangeable components | [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) |
+| Strategy | Using the Strategy pattern to separate interchangeable algorithms into components accessed through a context | [Strategy](https://refactoring.guru/design-patterns/strategy) |
 | Singleton | Using the Singleton pattern to prevent more than one entity from being instantiated | TimeTickSystem, InventoryManager, GameManager, [Singleton](https://refactoring.guru/design-patterns/singleton) | 
+| Observer | Using the Observer pattern to notify game event subscribers | GameEvent, GameEventListener, [Observer](https://refactoring.guru/design-patterns/observer) |
 
 ### To Do - Week 3
 - [x] Scriptable Objects - Add a demo to demonstrate a centrally modified game variable
@@ -39,13 +39,15 @@ elements (events, states, animation, input) for this module.
 - [x] Scriptable Objects - Add a framework for interactable, consumable, game, and level data
 - [x] Add Editor tools (inspector lock, folder generation)
 - [x] Add a SimpleSelectionManager as a starting point to discuss Abstract Factory and Strategy patterns
+- [x] Add Extensions demo (see Vector3Extensions)   
 
 ### To Do - Week 5
 - [x] Apply Abstract Factory and Strategy patterns to make an improved SelectionManager
 - [x] Use SOs to make an AdvancedSelectionManager
 - [x] Add a RequireInterface attribute 
-- [ ] Exercise: Modify UIRichTextPrompt to support multi-line output (see Exercise 1: Multi Text Rich Prompt - Using OnGUI)
-- [ ] Exercise: Add Singleton pattern demo (see Exercise 2: Simple Inventory - Inventory and Singletons)
+- [x] Exercise: Modify UIRichTextPrompt to support multi-line output (see Exercise 1: Multi Text Rich Prompt - Using OnGUI)
+
+### To Do - Week 6
 - [ ] Explain SerializableDictionary and demonstrate its use in InventoryManager 
 - [ ] Explain GameEvent and GameEventListener
-- [ ] Add Extensions demo (see Vector3Extensions)   
+

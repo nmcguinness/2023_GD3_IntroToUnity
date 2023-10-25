@@ -65,7 +65,9 @@ public class UIPrompt
 
     public override string ToString()
     {
-        return $"{(isItalic ? "<i>" : "")}{(isBold ? "<b>" : "")}<color=#{ColorUtility.ToHtmlStringRGBA(color)}><size={size}>{Text}</size></color>{(isBold ? "</b>" : "")}{(isItalic ? "</i>" : "")}";
+        return $"{(isItalic ? "<i>" : "")}{(isBold ? "<b>" : "")}" +
+            $"<color=#{ColorUtility.ToHtmlStringRGBA(color)}><size={size}>" +
+            $"{Text}</size></color>{(isBold ? "</b>" : "")}{(isItalic ? "</i>" : "")}";
     }
 }
 
