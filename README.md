@@ -12,9 +12,6 @@ elements (events, states, animation, input) for this module.
 - See Moodle "Getting Started With Unity" topic for core reading
 - [Three Ways to Architect Your Game With Scriptableobjects](https://unity.com/how-to/architect-game-code-scriptable-objects)
 
-## Additional Reading 
-- [Three Ways to Architect Your Game With Scriptableobjects](https://unity.com/how-to/architect-game-code-scriptable-objects)
-
 ## Table of Contents - Examples 
 | Topic | Week | Description | Recommended Reading |
 | :---------------- | :--------------- | :--------------- | :--------------- | 
@@ -48,6 +45,8 @@ elements (events, states, animation, input) for this module.
 - [x] Exercise: Modify UIRichTextPrompt to support multi-line output (see Exercise 1: Multi Text Rich Prompt - Using OnGUI)
 
 ### To Do - Week 6
-- [ ] Explain SerializableDictionary and demonstrate its use in InventoryManager 
 - [ ] Explain GameEvent and GameEventListener
+- [ ] Create Inventory system for collectible items 
+- [ ] Create a UI element to show one item of inventory and its count (e.g. Ammo: 3)
+
 
