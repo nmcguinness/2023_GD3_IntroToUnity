@@ -6,12 +6,13 @@ namespace GD
     /// Add a GUI prompt to a demo or prototype
     /// </summary>
     /// <see cref="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/StyledText.html"/>
+    [ExecuteAlways]
     public class UIRichTextPrompt : MonoBehaviour
     {
         [Header("Rich Text Content")]
         [SerializeField]
         [TextArea(1, 4)]
-        private string text = "<b><size=18><color=white>Sample emboldened and coloured text</color></size></b>";
+        private string text = "<b><size=12><color=white>Sample emboldened and coloured text</color></size></b>";
 
         [Header("Onscreen Position")]
         [SerializeField]
@@ -29,10 +30,6 @@ namespace GD
         private void OnGUI()
         {
             GUI.Label(textPosition, text, guiStyle);
-
-            //lets find out the dimensions of the drawn text
-            var dimensions = guiStyle.CalcSize(new GUIContent(text));
-            GUI.Label(new Rect(20, 40, 200, 20), $"Dims: {dimensions}", guiStyle);
         }
     }
 }
