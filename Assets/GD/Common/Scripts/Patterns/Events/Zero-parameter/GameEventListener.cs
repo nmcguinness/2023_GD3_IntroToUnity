@@ -10,7 +10,7 @@ namespace GD
 
         [SerializeField]
         [Tooltip("Specify the game event (scriptable object) which will raise the event")]
-        private GameEvent Event;
+        private GameEvent Event;  //read event + delegate -> GDEvent
 
         [SerializeField]
         private UnityEvent Response;
