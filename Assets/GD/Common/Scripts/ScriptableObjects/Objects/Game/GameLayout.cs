@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Stores data relating to a complete game (i.e. multiple levels)
@@ -7,59 +10,82 @@ using UnityEngine;
 /// <see cref="https://blogs.unity3d.com/2020/07/01/achieve-better-scene-workflow-with-scriptableobjects/"/>
 namespace GD
 {
-    [CreateAssetMenu(fileName = "GameLayout", menuName = "DkIT/Scriptable Objects/Game/Layout")]
-    public class GameLayout : ScriptableObject
+    [CreateAssetMenu(fileName = "GameLayout", menuName = "DkIT/Scriptable Objects/Game/Layout", order = 1)]
+    public class GameLayout : ScriptableGameObject
     {
-        [System.Serializable]
-        public enum LifecycleStage
-        {
-            PreAlpha, Alpha, Beta, ReleaseCandidate, StableRelease, EndOfLife
-        }
+        #region Title & Level Layout
+
+        [Header("Title")]
+        public string Title;
 
         [Header("Level Layout")]
-        [SerializeField]
-        private List<GameLevel> levels;
+        public List<GameLevel> Levels;
 
-        [SerializeField]
         [Min(0)]
         [Tooltip("Zero-based index in the list of level layouts for the start level in the game (e.g. 0)")]
-        private int startLevel;
+        public int StartLevel;
+
+        [ReadOnly]
+        public bool isStartLoaded;
+
+        [ReadOnly]
+        public int CurrentLevel;
+
+        #endregion Title & Level Layout
+
+        #region Menu
 
         [Header("Menu Layout")]
-        [SerializeField]
-        private GameScene mainMenu;
+        public GameScene MainMenu;
 
-        [SerializeField]
-        private GameScene pauseMenu;
+        public GameScene PauseMenu;
+        public GameScene UIMenu;
 
-        [SerializeField]
-        private GameScene uiMenu;
+        #endregion Menu
+
+        #region Development Team & Version
+
+        [Header("Development Team")]
+        public string ProductOwner;
+
+        public string TeamLead;
+        public string TestLead;
+        public List<TeamMember> TeamMembers;
 
         [Space(10)]
-        [Header("Version & Documentation Details (optional)")]
-        [SerializeField]
-        private LifecycleStage lifecycleStage;
+        [Header("Version & Documentation (optional)")]
+        public LifecycleStage Stage;
 
-        [SerializeField]
         [Min(1)]
-        private float version;
+        public float Version;
 
-        [SerializeField]
-        private string lastModifiedDate;  //we could consider a custom property here for datetime
+        public string RepositoryURL;
 
-        [Header("Level Design Team")]
-        [SerializeField]
-        private string teamLead;
+        #endregion Development Team & Version
 
-        [SerializeField]
-        private List<string> teamMembers;
+        [ContextMenu("Load Level")]
+        public void LoadLayout()
+        {
+            if (Levels.Count == 0)
+                return;
 
-        [Header("Supporting Documentation")]
-        [SerializeField]
-        private string documentationURL;
+            Levels[StartLevel].LoadLevel();
 
-        [HideInInspector]
-        public int currentLevel;
+            isStartLoaded = true;
+        }
+
+        [ContextMenu("Unload Level")]
+        public void UnloadLayout()
+        {
+            if (Levels.Count == 0)
+                return;
+
+            Levels[StartLevel].UnloadLevel();
+
+            isStartLoaded = false;
+        }
+
+        #region TODO
 
         //TODO
         public void NextLevel()
@@ -94,9 +120,6 @@ namespace GD
             // AssetDatabase
         }
 
-        public void LoadGame()
-        {
-            // AssetDatabase
-        }
+        #endregion TODO
     }
 }

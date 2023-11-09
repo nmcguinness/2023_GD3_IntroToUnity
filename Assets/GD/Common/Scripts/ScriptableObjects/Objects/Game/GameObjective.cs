@@ -3,10 +3,10 @@
 /// <summary>
 /// Stores data relating to a level objective
 /// </summary>
-/// <see cref="GD.ScriptableTypes.RuntimeGameObjectiveList"/>
+/// <see cref="ARVR.ScriptableTypes.RuntimeGameObjectiveList"/>
 namespace GD
 {
-    [CreateAssetMenu(fileName = "GameObjective", menuName = "DkIT/Scriptable Objects/Game/Objective")]
+    [CreateAssetMenu(fileName = "GameObjective", menuName = "DkIT/Scriptable Objects/Game/Objective", order = 4)]
     public class GameObjective : ScriptableObject
     {
         //[ColorPalette]  //Odin Inspector Demo

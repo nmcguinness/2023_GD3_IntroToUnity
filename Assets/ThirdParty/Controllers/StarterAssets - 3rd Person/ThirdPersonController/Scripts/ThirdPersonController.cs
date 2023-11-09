@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
-
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-
 using UnityEngine.InputSystem;
-
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -12,6 +9,9 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
+#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+    [RequireComponent(typeof(PlayerInput))]
+#endif
     public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")]
@@ -77,12 +77,10 @@ namespace StarterAssets
 
         // cinemachine
         private float _cinemachineTargetYaw;
-
         private float _cinemachineTargetPitch;
 
         // player
         private float _speed;
-
         private float _animationBlend;
         private float _targetRotation = 0.0f;
         private float _rotationVelocity;
@@ -91,12 +89,10 @@ namespace StarterAssets
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
-
         private float _fallTimeoutDelta;
 
         // animation IDs
         private int _animIDSpeed;
-
         private int _animIDGrounded;
         private int _animIDJump;
         private int _animIDFreeFall;
@@ -126,6 +122,7 @@ namespace StarterAssets
             }
         }
 
+
         private void Awake()
         {
             // get a reference to our main camera
@@ -138,7 +135,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-
+            
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -159,9 +156,9 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            //JumpAndGravity();
-            //GroundedCheck();
-            //Move();
+            JumpAndGravity();
+            GroundedCheck();
+            Move();
         }
 
         private void LateUpdate()
@@ -266,6 +263,7 @@ namespace StarterAssets
                 // rotate to face input direction relative to camera position
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
+
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
