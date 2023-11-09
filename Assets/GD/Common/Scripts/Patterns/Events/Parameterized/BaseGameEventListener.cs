@@ -3,34 +3,6 @@ using UnityEngine.Events;
 
 namespace GD
 {
-    public enum PickupType
-    {
-        SmallClipAmmo,
-        MediumClipAmmo,
-        LargeClipAmmo,
-
-        //health
-    }
-
-    public struct TheData
-    {
-        public string Name;
-        public string Description;
-        public string Type;
-    }
-
-    public class PickupGameEventListener : BaseGameEventListener<PickupType>
-    { }
-
-    public class IntGameEventListener : BaseGameEventListener<int>
-    { }
-
-    public class FloatGameEventListener : BaseGameEventListener<float>
-    { }
-
-    public class TheDataGameEventListener : BaseGameEventListener<TheData>
-    { }
-
     public abstract class BaseGameEventListener<T> : MonoBehaviour
     {
         [SerializeField]

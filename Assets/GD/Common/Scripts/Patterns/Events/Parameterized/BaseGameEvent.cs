@@ -8,12 +8,6 @@ namespace GD
     public class IntGameEvent : BaseGameEvent<int>
     { }
 
-    public class FloatGameEvent : BaseGameEvent<int>
-    { }
-
-    public class TheDataGameEvent : BaseGameEvent<TheData>
-    { }
-
     public abstract class BaseGameEvent<T> : ScriptableObject
     {
         private List<BaseGameEventListener<T>> listeners

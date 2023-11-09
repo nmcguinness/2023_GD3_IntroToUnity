@@ -34,5 +34,10 @@ namespace GD
         {
             currentMaterial.color = newColor;
         }
+
+        public void HandleHealthChange(int health)
+        {
+            Debug.Log($"health changed: {health}");
+        }
     }
 }
