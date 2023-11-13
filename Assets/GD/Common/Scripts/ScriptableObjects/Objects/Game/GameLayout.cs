@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Stores data relating to a complete game (i.e. multiple levels)
@@ -11,55 +9,86 @@ using UnityEngine.SceneManagement;
 namespace GD
 {
     [CreateAssetMenu(fileName = "GameLayout", menuName = "DkIT/Scriptable Objects/Game/Layout", order = 1)]
-    public class GameLayout : ScriptableGameObject
+    public class GameLayout : ScriptableObject
     {
         #region Title & Level Layout
 
         [Header("Title")]
         public string Title;
 
-        [Header("Level Layout")]
-        public List<GameLevel> Levels;
+        #region Level
 
+        [TabGroup("layout_tabs", "Levels", SdfIconType.Diagram2Fill)]
         [Min(0)]
         [Tooltip("Zero-based index in the list of level layouts for the start level in the game (e.g. 0)")]
         public int StartLevel;
 
-        [ReadOnly]
-        public bool isStartLoaded;
+        [TabGroup("layout_tabs", "Levels")]
+        [Searchable]
+        public List<GameLevel> Levels;
 
+        [TabGroup("layout_tabs", "Levels")]
+        [Header("Debug")]
+        [ReadOnly]
+        public bool IsLevelLoaded;
+
+        [TabGroup("layout_tabs", "Levels")]
         [ReadOnly]
         public int CurrentLevel;
+
+        #endregion Level
 
         #endregion Title & Level Layout
 
         #region Menu
 
-        [Header("Menu Layout")]
+        [TabGroup("layout_tabs", "Menus", SdfIconType.MenuAppFill)]
         public GameScene MainMenu;
 
+        [TabGroup("layout_tabs", "Menus")]
         public GameScene PauseMenu;
+
+        [TabGroup("layout_tabs", "Menus")]
         public GameScene UIMenu;
 
         #endregion Menu
 
         #region Development Team & Version
 
-        [Header("Development Team")]
+        [TabGroup("layout_tabs", "Development Team", SdfIconType.PeopleFill)]
         public string ProductOwner;
 
+        [TabGroup("layout_tabs", "Development Team")]
         public string TeamLead;
+
+        [TabGroup("layout_tabs", "Development Team")]
         public string TestLead;
+
+        [TabGroup("layout_tabs", "Development Team")]
+        [TableList(AlwaysExpanded = true, DrawScrollView = true, ShowIndexLabels = false)]
+        [Searchable]
         public List<TeamMember> TeamMembers;
 
-        [Space(10)]
-        [Header("Version & Documentation (optional)")]
-        public LifecycleStage Stage;
+        [TabGroup("layout_tabs", "Documentation (optional)", SdfIconType.BookFill)]
+        [EnumPaging]
+        public LifecycleStageType Stage;
 
+        [TabGroup("layout_tabs", "Documentation (optional)")]
+        [ReadOnly]
+        public string StageDescription;
+
+        [TabGroup("layout_tabs", "Documentation (optional)")]
+        public string RepositoryURL;
+
+        [TabGroup("layout_tabs", "Documentation (optional)")]
         [Min(1)]
         public float Version;
 
-        public string RepositoryURL;
+        private void OnValidate()
+        {
+            //set the description for the lifecycle stage
+            StageDescription = EnumExtensions.GetDescription(Stage);
+        }
 
         #endregion Development Team & Version
 
@@ -71,7 +100,7 @@ namespace GD
 
             Levels[StartLevel].LoadLevel();
 
-            isStartLoaded = true;
+            IsLevelLoaded = true;
         }
 
         [ContextMenu("Unload Level")]
@@ -82,7 +111,7 @@ namespace GD
 
             Levels[StartLevel].UnloadLevel();
 
-            isStartLoaded = false;
+            IsLevelLoaded = false;
         }
 
         #region TODO

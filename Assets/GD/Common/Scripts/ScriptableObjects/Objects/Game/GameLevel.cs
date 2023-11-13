@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -11,20 +12,18 @@ namespace GD
     [CreateAssetMenu(fileName = "GameLevel", menuName = "DkIT/Scriptable Objects/Game/Level", order = 2)]
     public class GameLevel : ScriptableGameObject
     {
-        [Space]
-        [Header("Scenes")]
+        [TabGroup("tab1", "Scenes", SdfIconType.PieChartFill)]
+        [Searchable]
         public List<GameScene> Scenes;
 
-        [Space]
-        [Header("Level Objectives (optional)")]
+        [TabGroup("tab1", "Objectives (optional)", SdfIconType.CardChecklist)]
+        [Searchable]
         public List<GameObjective> Objectives;
 
-        [Space]
-        [Header("Post-processing(optional")]
-        public bool UseDefaultPostProcessingVolume = false;
-
+        [TabGroup("tab1", "Postprocessing (optional)", SdfIconType.Fan)]
         public Volume PostProcessPrefab;
 
+        [TabGroup("tab1", "Postprocessing (optional)")]
         public VolumeProfile DefaultPostProcessProfile;
 
         //internal

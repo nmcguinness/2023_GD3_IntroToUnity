@@ -5,6 +5,8 @@
     /// </summary>
     public enum VisibilityStrategyType : sbyte
     {
-        ShowAlways, ShowWithin, ShowNever
+        NeverShow,
+        ShowWithin,
+        AlwaysShow
     }
 }

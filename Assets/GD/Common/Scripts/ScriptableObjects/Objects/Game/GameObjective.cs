@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Stores data relating to a level objective
@@ -12,55 +14,85 @@ namespace GD
         //[ColorPalette]  //Odin Inspector Demo
         //public Color color;
 
-        [Header("Completion Status")]
         [Tooltip("Set by the script attached to the object or by the game manager. By default all objectives are not completed at level startup")]
         public bool IsCompleted;
-
-        [Header("UI Icon & Description")]
-        [Tooltip("May be used by a dialog box or UI element to add an icon to the objective description")]
-        public Sprite Icon;
 
         [Tooltip("Shown on-screen as dialog text or in a UI. Note: Length will affect UI layout and font size")]
         public string Description;
 
-        [Header("Priority (optional)")]
-        [Tooltip("Priority used to mark how important objectives are when completing the level (default is Normal)")]
-        public PriorityType Priority;
+        [Tooltip("Transform specifying the position for the objective")]
+        public Transform Position;
 
-        [Header("Waypoint Settings (optional)")]
+        [Tooltip("May be used by a dialog box or UI element to add an icon to the objective description")]
+        [PreviewField(50, ObjectFieldAlignment.Left)]
+        public Sprite Icon;
+
+        #region Waypoint Prompt
+
+        [TabGroup("tab1", "Waypoint Prompt", SdfIconType.ChatTextFill)]
+        [Tooltip("Flag indicating that we show a keyword on proximity to the objective")]
+        public bool ShowPrompt = true;
+
+        [TabGroup("tab1", "Waypoint Prompt")]
+        [ShowIf("ShowPrompt")]
         [Tooltip("Specify action keyword shown with objective waypoint marker (e.g. Activate, Protect, Unlock)")]
         public string Keyword;
 
-        [Tooltip("Transform specifying the position for the waypoint")]
-        public Vector3 Position;
+        [TabGroup("tab1", "Waypoint Prompt")]
+        [ShowIf("ShowPrompt")]
+        [Tooltip("Priority used to mark how important objectives are when completing the level (default is Normal)")]
+        [EnumToggleButtons]
+        public PriorityType Priority = PriorityType.Normal;
 
+        [TabGroup("tab1", "Waypoint Prompt")]
+        [ShowIf("ShowPrompt")]
         [Tooltip("Specify when an onscreen waypoint is shown")]
-        public VisibilityStrategyType Visibility;
+        [EnumToggleButtons]
+        public VisibilityStrategyType KeyworkVisibility = VisibilityStrategyType.AlwaysShow;
 
-        [Range(1, 1000)]
-        [Tooltip("If visibility is Show Within then the waypoint will only show within the distance specified")]
-        public float ShownWithinDistance;
+        [TabGroup("tab1", "Waypoint Prompt")]
+        [ShowIf("ShowPrompt")]
+        [MinValue(0)]
+        [Unit(Units.Meter)]
+        [Tooltip("If visibility is Show Within then the waypoint will only show within the radius specified")]
+        public float ShowRadius;
 
-        [Header("Time Dependent (optional)")]
+        #endregion Waypoint Prompt
+
+        #region Time Dependent
+
+        [TabGroup("tab1", "Time Dependent (optional)", SdfIconType.HourglassSplit)]
         [Tooltip("Flag indicating that the objective must be completed in the timeLimitSecs duration")]
-        public bool IsTimeLimited;
+        public bool IsTimeLimited = true;
 
-        [Min(0)]
+        [TabGroup("tab1", "Time Dependent (optional)")]
+        [MinValue(0)]
+        [Unit(Units.Second)]
+        [ShowIf("IsTimeLimited")]
         [Tooltip("Amount of time before which the player will automatically fail to complete the level objectives")]
         public int timeLimitSecs;
 
-        [Tooltip("Audio clip played when the time limit is being reached")]
-        public AudioClip timeLimitAudioClip;
+        #endregion Time Dependent
 
-        [Range(1, 60)]
-        [Tooltip("Time in seconds before the time limit elapses when we start to play the time limit audio clip. Must be less than Time Limit Secs value.")]
-        public float playTimeLimitAudioBeforeSecs;
+        #region Feedback
 
-        [Header("Completion Feedback (optional)")]
+        [TabGroup("tab1", "Feedback (optional)", SdfIconType.HandThumbsUpFill)]
         [Tooltip("Completion text shown when the objective has been achieved")]
         public string AchievementText;
 
+        [TabGroup("tab1", "Feedback (optional)")]
         [Tooltip("Audio clip played when the objective has been achieved")]
         public AudioClip AchievementAudioClip;
+
+        [TabGroup("tab1", "Feedback (optional)")]
+        [Tooltip("Audio clip played when the time limit is being reached")]
+        public AudioClip TimeLimitAudioClip;
+
+        [TabGroup("tab1", "Feedback (optional)")]
+        [Range(0, 60)]
+        [Tooltip("Time in seconds before the time limit elapses when we start to play the time limit audio clip. Must be less than Time Limit Secs value.")]
+        public float PlayBeforeSecs = 0;
+
+        #endregion Feedback
     }
 }

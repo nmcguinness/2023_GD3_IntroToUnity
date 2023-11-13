@@ -357,15 +357,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 396722165}
-  - component: {fileID: 396722166}
   - component: {fileID: 396722167}
+  - component: {fileID: 396722166}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &396722165
 Transform:
   m_ObjectHideFlags: 0
@@ -390,18 +390,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 396722163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26ddd383a0396fc458ffbf018bb57463, type: 3}
+  m_Script: {fileID: 11500000, guid: 80f7e23b28b2bd2429d86322c96c9b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Player 1 - Trigged when blue player health < 0 and results in OnDie
-  Event: {fileID: 11400000, guid: 4551e8bb681d2194e96ef403210368fd, type: 2}
+  description: Respond to OnWin
+  Event: {fileID: 0}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 1537203149}, m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine, m_MethodName: SetActive, m_Mode: 6, m_Arguments: {m_ObjectArgument: {fileID: 0},
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0,
-          m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &396722167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,18 +419,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 396722163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26ddd383a0396fc458ffbf018bb57463, type: 3}
+  m_Script: {fileID: 11500000, guid: 80f7e23b28b2bd2429d86322c96c9b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Player 2 - Trigged when blue player health < 0 and results in OnDie
-  Event: {fileID: 11400000, guid: 5278632f7ccbd2e40a424b2e5a0566ca, type: 2}
+  description: Respond to OnDie
+  Event: {fileID: 0}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 393765576}, m_TargetAssemblyTypeName: GD.MaterialChangeBehaviour, Assembly-CSharp, m_MethodName: SetColor, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0},
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0,
-          m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
+      - m_Target: {fileID: 393765576}
+        m_TargetAssemblyTypeName: GD.MaterialChangeBehaviour, Assembly-CSharp
+        m_MethodName: SetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &459261293
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +450,7 @@ GameObject:
   - component: {fileID: 459261295}
   - component: {fileID: 459261294}
   m_Layer: 0
-  m_Name: PPV
+  m_Name: Postprocessing Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,10 +670,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Called when P1 has a health change
-  Event: {fileID: 11400000, guid: 19315b569024056419093a0cd8fc4270, type: 2}
+  Event: {fileID: 11400000, guid: ea9c6174b9ad1e34382cad631902b8f8, type: 2}
   Response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - {m_Target: {fileID: 393765576}, m_TargetAssemblyTypeName: GD.MaterialChangeBehaviour, Assembly-CSharp, m_MethodName: HandleHealthChange, m_Mode: 0, m_Arguments: {m_ObjectArgument: {fileID: 0},
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0,
+          m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
+    m_CallsDirty: 1
 --- !u!1 &1449883790
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1537203150
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -925,7 +945,7 @@ GameObject:
   - component: {fileID: 1679808865}
   - component: {fileID: 1679808864}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player - Press H to decrement health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,7 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de4cae3d58bd2f43a2cd186457e805b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnHealthChanged: {fileID: 11400000, guid: 19315b569024056419093a0cd8fc4270, type: 2}
+  OnHealthChanged: {fileID: 11400000, guid: ea9c6174b9ad1e34382cad631902b8f8, type: 2}
 --- !u!4 &1679808865
 Transform:
   m_ObjectHideFlags: 0
@@ -963,11 +983,11 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 459261295}
   - {fileID: 501756715}
   - {fileID: 1449883792}
-  - {fileID: 325217198}
   - {fileID: 1481798985}
+  - {fileID: 325217198}
   - {fileID: 1537203153}
   - {fileID: 393765575}
-  - {fileID: 459261295}
   - {fileID: 1679808865}

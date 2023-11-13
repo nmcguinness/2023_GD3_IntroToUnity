@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace GD.Collections
     {
         [Header("List Contents")]
         [SerializeField]
+        [Searchable]
         private List<T> list = new List<T>();
 
         public T this[int index]
@@ -157,6 +159,12 @@ namespace GD.Collections
     [System.Serializable]
     [CreateAssetMenu(fileName = "RuntimeGameObjectList", menuName = "DkIT/Scriptable Objects/Types/Collections/List/Game Object", order = 7)]
     public class RuntimeGameObjectList : RuntimeList<GameObject>
+    {
+    }
+
+    [System.Serializable]
+    [CreateAssetMenu(fileName = "RuntimeUIPromptList", menuName = "DkIT/Scriptable Objects/Types/Collections/List/UIPrompt", order = 8)]
+    public class RuntimeUIPromptList : RuntimeList<UIPrompt>
     {
     }
 

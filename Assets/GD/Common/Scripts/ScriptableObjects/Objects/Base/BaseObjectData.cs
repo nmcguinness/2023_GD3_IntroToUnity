@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace GD
 {
@@ -6,6 +7,7 @@ namespace GD
     public abstract class BaseObjectData : ScriptableGameObject
     {
         [Tooltip("Specify the type of this object (e.g. equipment, food, weapon)")]
+        [EnumPaging]
         public ItemType Type;
     }
 }

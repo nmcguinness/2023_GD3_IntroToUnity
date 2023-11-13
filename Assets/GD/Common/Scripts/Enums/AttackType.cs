@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines the attack type of a NPC
     /// </summary>
-    /// <see cref="GD.Objects.PlaceableObjectData"/>
+    /// <see cref="ARVR.Objects.PlaceableObjectData"/>
     public enum AttackType : sbyte
     {
         Melee, Ranged

@@ -1,5 +1,7 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [Serializable]
@@ -10,23 +12,28 @@ public class UIPrompt
     private static readonly int MinScaledSize = 6;
 
     [SerializeField]
-    [TextArea(1, 2)]
+    [TextArea(2, 5)]
     private string text = "";
 
+    [FoldoutGroup("Format", expanded: true)]
     [SerializeField]
     [ColorUsage(true)]
     private Color color = DefaultColor;
 
+    [FoldoutGroup("Format")]
     [SerializeField]
     [Range(8, 36)]
     private int size = 12;
 
+    [FoldoutGroup("Format")]
     [SerializeField]
     private bool isBold;
 
+    [FoldoutGroup("Format")]
     [SerializeField]
     private bool isItalic;
 
+    [FoldoutGroup("Debug", expanded: false)]
     [SerializeField, ReadOnly]
     private Vector2 dimensions;
 
@@ -107,7 +114,6 @@ public class UIRichTextMultiPrompt : MonoBehaviour
     private List<UIPrompt> prompts;
 
     [Space]
-    [Header("Font Scaling")]
     [SerializeField]
     [Tooltip("Enable to scale all prompts with a single scale factor")]
     private bool enableGlobalFontScaling;
@@ -115,6 +121,7 @@ public class UIRichTextMultiPrompt : MonoBehaviour
     [SerializeField]
     [Tooltip("Set to scale all prompts by float factor")]
     [Range(25, 400)]
+    [ShowIfGroup("enableGlobalFontScaling")]
     private int globalScalePercentage = 100;
 
     private GUIStyle guiStyle;

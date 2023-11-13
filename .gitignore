@@ -12,6 +12,7 @@
 
 # Purchase (by lecturer) assets
 [Aa]ssets/Plugins/Borodar/
+[Aa]ssets/Plugins/Sirenix/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -60,4 +61,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-

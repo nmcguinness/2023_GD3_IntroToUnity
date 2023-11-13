@@ -25,7 +25,7 @@ elements (events, states, animation, input) for this module.
 | Abstract Factory | 2 | Using the Abstract Factory pattern to make interchangeable components | [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) |
 | Strategy | 3 | Using the Strategy pattern to separate interchangeable algorithms into components accessed through a context | [Strategy](https://refactoring.guru/design-patterns/strategy) |
 | Singleton | 5 | Using the Singleton pattern to prevent more than one entity from being instantiated | TimeTickSystem, InventoryManager, GameManager, [Singleton](https://refactoring.guru/design-patterns/singleton) | 
-| Observer | 6 | Using the Observer pattern to notify game event subscribers | GameEvent, GameEventListener, [Observer](https://refactoring.guru/design-patterns/observer) |
+| Observer | 6-7 | Using the Observer pattern to notify game event subscribers | GameEvent, GameEventListener, [Observer](https://refactoring.guru/design-patterns/observer) |
 
 ### To Do - Week 3
 - [x] Scriptable Objects - Add a demo to demonstrate a centrally modified game variable
@@ -45,8 +45,16 @@ elements (events, states, animation, input) for this module.
 - [x] Exercise: Modify UIRichTextPrompt to support multi-line output (see Exercise 1: Multi Text Rich Prompt - Using OnGUI)
 
 ### To Do - Week 6
+- [ ] Explain event and delegate
+
+### To Do - Week 7
 - [ ] Explain GameEvent and GameEventListener
-- [ ] Create Inventory system for collectible items 
+- [ ] Develop BaseGameEvent<T> and BaseGameEventListener<T> to support parameterised events
+- [ ] Introduce CharacterController and Cinemachine
+
+### To Do - Week 8
+- [ ] Use BaseGameEvent<T> and BaseGameEventListener<T> to pickup game objects
+- [ ] Add collected items to an inventory 
 - [ ] Create a UI element to show one item of inventory and its count (e.g. Ammo: 3)
 
 
