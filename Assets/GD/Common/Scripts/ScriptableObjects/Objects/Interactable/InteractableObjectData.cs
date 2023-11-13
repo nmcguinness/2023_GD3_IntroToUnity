@@ -7,7 +7,7 @@ namespace GD
     public class InteractableObjectData : BaseObjectData
     {
         [Tooltip("Icon used by onscreen UI and any notification panel popups")]
-        [PreviewField(50, ObjectFieldAlignment.Right)]
+        [PreviewField(50, ObjectFieldAlignment.Left)]
         public Sprite icon;
 
         [TabGroup("tab1", "Audio", SdfIconType.Soundwave)]

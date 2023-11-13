@@ -15,6 +15,7 @@ MonoBehaviour:
   Title: 
   StartLevel: 0
   Levels:
+  - {fileID: 11400000, guid: c485f16a410ce9d43909670ca57454e1, type: 2}
   - {fileID: 11400000, guid: ff3331ec7ee41bd48bbd2453fe6ef7b6, type: 2}
   IsLevelLoaded: 0
   CurrentLevel: 0
@@ -24,14 +25,8 @@ MonoBehaviour:
   ProductOwner: 
   TeamLead: 
   TestLead: 
-  TeamMembers:
-  - Name: John Smith
-    role:
-    - Department: 3
-      Role: 11
-    - Department: 2
-      Role: 22
-  Stage: 1
-  StageDescription: Initial implementation to validate a concept.
+  TeamMembers: []
+  Stage: 0
+  StageDescription: Experimental stage for trying out ideas.
   RepositoryURL: 
   Version: 0

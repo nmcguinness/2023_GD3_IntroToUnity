@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc5636a9607183142a682d7f86853180, type: 3}
-  m_Name: Objective - Level 1 - Find the Key
+  m_Name: GameObjective
   m_EditorClassIdentifier: 
   IsCompleted: 0
-  Description: Find the key and escape the dungeon
+  Description: 
   Position: {fileID: 0}
-  Icon: {fileID: 1401011104, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
+  Icon: {fileID: 0}
   ShowPrompt: 1
-  Keyword: Key
-  Priority: 3
-  KeyworkVisibility: 0
+  Keyword: 
+  Priority: 1
+  KeyworkVisibility: 2
   ShowRadius: 0
   IsTimeLimited: 1
-  timeLimitSecs: 60
-  AchievementText: You found the key! Now try to escape the crypt
+  timeLimitSecs: 0
+  AchievementText: 
   AchievementAudioClip: {fileID: 0}
   TimeLimitAudioClip: {fileID: 0}
   PlayBeforeSecs: 0
