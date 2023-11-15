@@ -2363,7 +2363,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 100
-  field of view: 110
+  field of view: 60
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -2683,6 +2683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnPickup: {fileID: 11400000, guid: 1ed589628eec08e499c5a6c0d8723dbf, type: 2}
+  targetTag: Consumable
 --- !u!1001 &1217728613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4303,7 +4304,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 927492846}
   m_Lens:
-    FieldOfView: 110
+    FieldOfView: 60
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 100
