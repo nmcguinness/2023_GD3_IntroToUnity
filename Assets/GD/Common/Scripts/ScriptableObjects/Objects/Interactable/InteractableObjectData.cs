@@ -3,12 +3,23 @@ using UnityEngine;
 
 namespace GD
 {
-    [CreateAssetMenu(fileName = "InteractableObjectData", menuName = "DkIT/Scriptable Objects/Game/Objects/Interactable")]
+    [CreateAssetMenu(fileName = "InteractableObjectData", menuName = "DkIT/Scriptable Objects/Objects/Interactable")]
     public class InteractableObjectData : BaseObjectData
     {
-        [Tooltip("Icon used by onscreen UI and any notification panel popups")]
+        [TabGroup("tab1", "UI", SdfIconType.ImageFill)]
+        [Tooltip("Icon used by UI when item is item")]
         [PreviewField(50, ObjectFieldAlignment.Left)]
-        public Sprite icon;
+        public Sprite uiIconEmpty;
+
+        [TabGroup("tab1", "UI")]
+        [Tooltip("Icon used by UI when item is filling")]
+        [PreviewField(50, ObjectFieldAlignment.Left)]
+        public Sprite uiIconNormal;
+
+        [TabGroup("tab1", "UI")]
+        [Tooltip("Icon used by UI when item is filled")]
+        [PreviewField(50, ObjectFieldAlignment.Left)]
+        public Sprite uiIconFilled;
 
         [TabGroup("tab1", "Audio", SdfIconType.Soundwave)]
         [Tooltip("Audio clipped played when interactable is picked up")]

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GD
 {
-    [CreateAssetMenu(fileName = "ConsumableObjectData", menuName = "DkIT/Scriptable Objects/Game/Objects/Consumable")]
+    [CreateAssetMenu(fileName = "ConsumableObjectData", menuName = "DkIT/Scriptable Objects/Objects/Consumable")]
     public class ConsumableObjectData : InteractableObjectData
     {
         [TabGroup("tab1", "Buffs", SdfIconType.Gem)]
@@ -27,12 +27,12 @@ namespace GD
         public AttributeType Attribute;
 
         [Tooltip("Specify the value of the attribute (e.g. 10 stamina points)")]
-        [ProgressBar(0, 20, 0, 1, 0, ColorGetter = "GetColor", DrawValueLabel = true, ValueLabelAlignment = TextAlignment.Center)]
+        [ProgressBar(0, 100, 0, 1, 0, ColorGetter = "GetColor", DrawValueLabel = true, ValueLabelAlignment = TextAlignment.Center)]
         public int Value;
 
         public Color GetColor(float value)
         {
-            return Color.Lerp(Color.red, Color.green, Mathf.Pow(value / 20, 2));
+            return Color.Lerp(Color.red, Color.green, Mathf.Pow(value / 100, 2));
         }
     }
 }

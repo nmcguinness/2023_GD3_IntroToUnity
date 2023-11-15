@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d9be7ad1597d14e9eb4a7382b197b1, type: 3}
+  m_Name: Dracula - Too Much At Stake
+  m_EditorClassIdentifier: 
+  Description: BSc - Year 4 - Collaborative Project - Game build
+  Title: Dracula - Too Much At Stake
+  Levels:
+  - {fileID: 11400000, guid: a04d623251942154e858bee5ea606673, type: 2}
+  StartLevel: 0
+  isStartLoaded: 0
+  CurrentLevel: 0
+  MainMenu: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  UIMenu: {fileID: 0}
+  ProductOwner: Jane Honda
+  TeamLead: Mark Parks
+  TestLead: Lauren Apples
+  TeamMembers:
+  - Name: Bart Farmleigh
+    role:
+    - Department: 0
+      Role: 0
+    - Department: 1
+      Role: 4
+  - Name: Mark Sparks
+    role:
+    - Department: 2
+      Role: 8
+  Stage: 0
+  Version: 0
+  RepositoryURL: 

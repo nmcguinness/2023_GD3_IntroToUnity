@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Contains a set of ScriptableObject(SO) data types (float, int, bool) and reference types that can switch between a local variable (e.g float) or reference to a shared variable (e.g. FloatVariable)
@@ -8,25 +11,57 @@ namespace GD
     #region Generic Type
 
     [System.Serializable]
-    public abstract class ScriptableDataType<T> : ScriptableGameObject
+    public abstract class ScriptableDataType<T> : ScriptableGameObject, IComparer<ScriptableDataType<T>>, IComparable<ScriptableDataType<T>>
     {
-        [Header("Value")]
+        [SerializeField]
         [ContextMenuItem("Reset Value", "ResetValue")]
-        public T Value;
+        private T value;
 
-        public void Set(T value)
+        [SerializeField]
+        [Tooltip("Event raised when data is set")]
+        private UnityEvent<T> OnSet;
+
+        [SerializeField]
+        [Tooltip("Event raised when data is set")]
+        private UnityEvent<T> OnReset;
+
+        public T Value { get => value; set => this.value = value; }
+
+        public virtual void Set(T value)
         {
-            Value = value;
+            this.value = value;
+            OnSet?.Invoke(this.value);
         }
 
         public virtual void ResetValue()
         {
-            Set(default(T));
+            value = default(T);
+            OnReset?.Invoke(this.value);
         }
 
-        public bool Equals(T other)
+        public override bool Equals(object obj)
         {
-            return Value.Equals(other);
+            return obj is ScriptableDataType<T> type &&
+                   base.Equals(obj) &&
+                   UniqueID.Equals(type.UniqueID);
+        }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(base.GetHashCode());
+            hash.Add(UniqueID);
+            return hash.ToHashCode();
+        }
+
+        public int CompareTo(ScriptableDataType<T> other)
+        {
+            return Compare(this, other);
+        }
+
+        public int Compare(ScriptableDataType<T> x, ScriptableDataType<T> y)
+        {
+            return Comparer<T>.Default.Compare(x.value, y.value);
         }
     }
 
