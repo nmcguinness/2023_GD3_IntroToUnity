@@ -7,6 +7,7 @@
     /// <see cref="Objects.ConsumableObjectData"/>
     public enum AttributeType : sbyte
     {
-        Agility, Intelligence, Knowledge, Mana, Sight, Speed, Strength, Stamina
+        Agility, Intelligence, Knowledge, Mana, Sight, Speed, Strength, Stamina,
+        Ammo, Health
     }
 }

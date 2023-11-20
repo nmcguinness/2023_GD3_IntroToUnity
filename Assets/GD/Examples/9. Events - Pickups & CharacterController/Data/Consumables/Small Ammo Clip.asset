@@ -12,13 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caca661463c8cf4f933fdd975139d0c, type: 3}
   m_Name: Small Ammo Clip
   m_EditorClassIdentifier: 
-  Description: Ammp
-  Type: 0
-  icon: {fileID: 1401011104, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
-  PickupClip: {fileID: 8300000, guid: a1162cf1df840364e90b50a774b23b4a, type: 3}
+  uniqueID: 0f0fdc25-d4bb-4c1c-a872-99efcaac44eb
+  LastUpdated: 15/11/23 12:14:46
+  LastUpdatedBy: NMCG
+  Notes: 
+  Description: Small Ammo Clip
+  Type: 1
+  uiIconEmpty: {fileID: 0}
+  uiIconNormal: {fileID: 0}
+  uiIconFilled: {fileID: 0}
+  PickupClip: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
   UseClip: {fileID: 0}
   DropClip: {fileID: 0}
   LivesForSecs: 0
   RespawnEverySecs: 0
-  buffs: []
+  buffs:
+  - Attribute: 8
+    Value: 30
   ApplyPolicy: 0

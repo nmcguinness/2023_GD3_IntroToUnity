@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9caca661463c8cf4f933fdd975139d0c, type: 3}
+  m_Name: Large Health Pack
+  m_EditorClassIdentifier: 
+  uniqueID: fe917b42-b93c-49f6-895b-7ed26de71e2a
+  LastUpdated: 15/11/23 12:14:47
+  LastUpdatedBy: 
+  Notes: 
+  Description: Large Health Pack
+  Type: 0
+  uiIconEmpty: {fileID: 0}
+  uiIconNormal: {fileID: 0}
+  uiIconFilled: {fileID: 0}
+  PickupClip: {fileID: 8300000, guid: a235d590ef2a04d1b85b61ef4c21337c, type: 3}
+  UseClip: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
+  DropClip: {fileID: 8300000, guid: 72127805eb2bc4e7fbf2e02eca266cfa, type: 3}
+  LivesForSecs: -1
+  RespawnEverySecs: -1
+  buffs:
+  - Attribute: 8
+    Value: 50
+  ApplyPolicy: 0

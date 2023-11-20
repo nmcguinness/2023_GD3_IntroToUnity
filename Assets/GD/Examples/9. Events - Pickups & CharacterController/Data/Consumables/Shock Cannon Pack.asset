@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9caca661463c8cf4f933fdd975139d0c, type: 3}
+  m_Name: Shock Cannon Pack
+  m_EditorClassIdentifier: 
+  uniqueID: fa2eac44-a96f-43dc-859b-ece06b56b250
+  LastUpdated: 15/11/23 12:03:40
+  LastUpdatedBy: 
+  Notes: 
+  Description: 
+  Type: 0
+  uiIconEmpty: {fileID: 0}
+  uiIconNormal: {fileID: 0}
+  uiIconFilled: {fileID: 0}
+  PickupClip: {fileID: 0}
+  UseClip: {fileID: 0}
+  DropClip: {fileID: 0}
+  LivesForSecs: 0
+  RespawnEverySecs: 0
+  buffs: []
+  ApplyPolicy: 0

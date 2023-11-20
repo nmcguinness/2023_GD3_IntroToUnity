@@ -1,6 +1,5 @@
 ﻿using Sirenix.OdinInspector;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GD
@@ -11,10 +10,10 @@ namespace GD
 
         #region Fields
 
-        [PropertyOrder(100)]
+        [PropertyOrder(1000)]
         [FoldoutGroup("Developer Info")]
         [SerializeField]
-        [ReadOnly]
+        //   [ReadOnly]
         [Tooltip("A unique ID to identify each consumable, interactable, placeable instance")]
         private string uniqueID = System.Guid.NewGuid().ToString();
 
