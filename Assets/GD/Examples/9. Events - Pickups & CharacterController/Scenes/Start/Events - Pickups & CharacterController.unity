@@ -141,6 +141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 162761876}
+  - component: {fileID: 162761877}
   m_Layer: 0
   m_Name: InventoryManager
   m_TagString: Untagged
@@ -163,6 +164,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1388715988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162761877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162761875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0067205741718f247bfcaa25b93c8237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 8f59d27bc069270468829b07e230ad00, type: 2}
 --- !u!1 &178037006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2937,7 +2951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372b16aac73b8ca40ad014ef99b5c082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPickup: {fileID: 11400000, guid: 1ed589628eec08e499c5a6c0d8723dbf, type: 2}
+  OnPickup: {fileID: 11400000, guid: 7177f3df84caa9049af905b9742ac782, type: 2}
   targetTag: Consumable
 --- !u!1 &1219210641
 GameObject:
@@ -3560,6 +3574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lightning Bolt of Mild Drizzle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400410021779781052, guid: 363ffa734ff1cf64d85ebc4c426f50ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: Consumable
       objectReference: {fileID: 0}
     - target: {fileID: 7965050084530210735, guid: 363ffa734ff1cf64d85ebc4c426f50ad,
         type: 3}
@@ -4365,6 +4384,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield of Sarcasm (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2391313995843736757, guid: 16428cc273ef62f48b608d0f0516e492,
+        type: 3}
+      propertyPath: m_TagString
+      value: Consumable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4954,7 +4978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1894287827}
-  - component: {fileID: 1894287829}
+  - component: {fileID: 1894287828}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -4977,7 +5001,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1388715988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1894287829
+--- !u!114 &1894287828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4989,11 +5013,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f2c528013cac74f9e7f5478f33ea67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Handles raised ItemData event when user pickups consumables
+  description: Handle when items are collected by player
   Event: {fileID: 11400000, guid: 7177f3df84caa9049af905b9742ac782, type: 2}
   Response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 162761877}
+        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_MethodName: HandleItemPickup
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2023127886
 GameObject:
   m_ObjectHideFlags: 0
@@ -5266,6 +5302,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield of Sarcasm
       objectReference: {fileID: 0}
+    - target: {fileID: 2391313995843736757, guid: 16428cc273ef62f48b608d0f0516e492,
+        type: 3}
+      propertyPath: m_TagString
+      value: Consumable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5283,6 +5324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lightning Bolt of Mild Drizzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400410021779781052, guid: 363ffa734ff1cf64d85ebc4c426f50ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: Consumable
       objectReference: {fileID: 0}
     - target: {fileID: 7965050084530210735, guid: 363ffa734ff1cf64d85ebc4c426f50ad,
         type: 3}

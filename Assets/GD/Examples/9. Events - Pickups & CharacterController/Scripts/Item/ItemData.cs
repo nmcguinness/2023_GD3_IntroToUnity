@@ -9,6 +9,9 @@ public class ItemData : ScriptableObject
     [Required]
     public string Name;
 
+    [Tooltip("Used by SpawnManager to instantiate an object")]
+    public GameObject itemPrefab;
+
     [Min(-1000)]
     public int Value;
 

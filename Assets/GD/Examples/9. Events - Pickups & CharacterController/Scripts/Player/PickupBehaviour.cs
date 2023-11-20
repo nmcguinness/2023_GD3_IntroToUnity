@@ -4,7 +4,7 @@ using UnityEngine;
 public class PickupBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private StringGameEvent OnPickup;
+    private ItemDataGameEvent OnPickup;
 
     [SerializeField]
     private string targetTag = "Consumable";
@@ -13,22 +13,17 @@ public class PickupBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag.Equals(targetTag))
         {
-            OnPickup?.Raise("small ammo clip");
+            //try to get the data from the pickup
+            var itemDataBehaviour = other.gameObject.GetComponent<ItemDataBehaviour>();
 
-            //  ConsumableObject consumableObject;
-            //  other.gameObject.TryGetComponent<ConsumableObject>(out consumableObject);
-            // ConsumableObject consumableObject =
-            //other.gameObject.GetComponent<ConsumableObject>();
+            //raise the event (tell the EventManager that this thing happened)
+            OnPickup?.Raise(itemDataBehaviour.ItemData);
 
-            // //yeah, it has that thing on it
-            // if (consumableObject != null)
-            // {
-            //     OnPickup?.Raise(consumableObject.ConsumableData.UniqueID);
+            //play where item was
+            AudioSource.PlayClipAtPoint(itemDataBehaviour.ItemData.PickupClip,
+              other.gameObject.transform.position);
 
-            //     //AudioSource.PlayClipAtPoint(
-            //     //    consumableObject.ConsumableData.PickupClip,
-            //     //    other.gameObject.transform.position);
-            // }
+            Destroy(other.gameObject, itemDataBehaviour.ItemData.PickupClip.length);
         }
     }
 }
