@@ -15,7 +15,7 @@ public class ItemData : ScriptableObject
     [Min(-1000)]
     public int Value;
 
-    [InlineButton("DoPress", "Press Me")]
+    [AudioClipButton]
     public AudioClip PickupClip;
 
     [PreviewField(50, Alignment = ObjectFieldAlignment.Left)]

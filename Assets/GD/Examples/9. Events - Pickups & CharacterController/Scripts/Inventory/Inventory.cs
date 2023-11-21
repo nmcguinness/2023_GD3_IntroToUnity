@@ -6,5 +6,5 @@ using UnityEngine;
     menuName = "DkIT/Scriptable Objects/Game/Inventory")]
 public class Inventory : SerializedScriptableObject
 {
-    public Dictionary<ItemData, int> Contents;
+    public Dictionary<ItemData, int> Contents = new Dictionary<ItemData, int>();
 }

@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 287eb91d251e65b47839b0a071bf0be5, type: 3}
-  m_Name: Lightning Bolt of Mild Drizzle
+  m_Name: Heart of Stone
   m_EditorClassIdentifier: 
-  Name: Lightning Bolt of Mild Drizzle
-  itemPrefab: {fileID: 6400410021779781052, guid: 363ffa734ff1cf64d85ebc4c426f50ad,
-    type: 3}
-  Value: 500
-  PickupClip: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
-  WaypointIcon: {fileID: 21300000, guid: bdbbd192cba22224396018366d28f41e, type: 3}
+  Name: Heart of Stone
+  itemPrefab: {fileID: 0}
+  Value: -50
+  PickupClip: {fileID: 8300000, guid: 5fe4bc0609c03e24097e0cb3666a4fb5, type: 3}
+  WaypointIcon: {fileID: 21300000, guid: 6f649aea2852e3b46a8c4386355a2c53, type: 3}

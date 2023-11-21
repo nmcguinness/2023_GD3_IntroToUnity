@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 287eb91d251e65b47839b0a071bf0be5, type: 3}
-  m_Name: Lightning Bolt of Mild Drizzle
+  m_Name: Vaccine of Health
   m_EditorClassIdentifier: 
-  Name: Lightning Bolt of Mild Drizzle
-  itemPrefab: {fileID: 6400410021779781052, guid: 363ffa734ff1cf64d85ebc4c426f50ad,
-    type: 3}
-  Value: 500
-  PickupClip: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
-  WaypointIcon: {fileID: 21300000, guid: bdbbd192cba22224396018366d28f41e, type: 3}
+  Name: Vaccine of Health
+  itemPrefab: {fileID: 0}
+  Value: 100
+  PickupClip: {fileID: 8300000, guid: acf3477f4c839c248b89afe017198ac5, type: 3}
+  WaypointIcon: {fileID: 21300000, guid: 72ec55939a589894eaf624298fd9f858, type: 3}
