@@ -9,8 +9,8 @@ public class AdvancedTweenBehaviour : MonoBehaviour
     public float scaleFactor;
     public float scaleUpDuration;
     public float scaleDownDuration;
-    private Ease easeInCurve;
-    private Ease easeOutCurve;
+    public AnimationCurve easeInCurve;
+    public Ease easeOutCurve;
 
     private void Start()
     {
