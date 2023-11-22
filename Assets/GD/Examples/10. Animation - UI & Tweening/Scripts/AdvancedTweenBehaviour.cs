@@ -1,7 +1,6 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AdvancedTweenBehaviour : MonoBehaviour
 {
@@ -9,8 +8,11 @@ public class AdvancedTweenBehaviour : MonoBehaviour
     public float scaleFactor;
     public float scaleUpDuration;
     public float scaleDownDuration;
-    public AnimationCurve easeInCurve;
+
+    public AnimationCurve easeInCurve;// = AnimationCurve.Linear;
     public Ease easeOutCurve;
+
+    public UnityEvent OnCycle;
 
     private void Start()
     {
@@ -35,6 +37,10 @@ public class AdvancedTweenBehaviour : MonoBehaviour
         .SetLoops(1, LoopType.Restart)
         .SetEase(easeOutCurve)
         .SetDelay(1)
-        .OnComplete(ScaleUp);
+        .OnComplete(() =>
+        {
+            OnCycle.Invoke();
+            ScaleUp();
+        });
     }
 }
