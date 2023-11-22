@@ -195,7 +195,8 @@ public abstract class BaseTween : ScriptableGameObject
     }
 }
 
-[CreateAssetMenu(fileName = "TranslationTween", menuName = "DkIT/Scriptable Objects/Tweening/Translation", order = 1)]
+[CreateAssetMenu(fileName = "TranslationTween",
+menuName = "DkIT/Scriptable Objects/Tweening/Translation", order = 1)]
 public class TranslationTween : BaseTween
 {
     public Vector3 TranslationVector = Vector3.up;
