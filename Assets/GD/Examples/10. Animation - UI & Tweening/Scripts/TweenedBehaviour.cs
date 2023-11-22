@@ -11,8 +11,8 @@ using UnityEngine;
 public class TweenedBehaviour : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Check to immediately start tweening when GameObject is loaded into the scene")]
-    private bool playOnAwake = true;
+    [Tooltip("Check to immediately start tweening before first update on the GameObject in the scene")]
+    private bool playOnStart = true;
 
     [TabGroup("tab1", "Translation Settings")]
     [SerializeField]
@@ -126,9 +126,9 @@ public class TweenedBehaviour : MonoBehaviour
 
     private Material material;
 
-    private void Awake()
+    private void Start()
     {
-        if (playOnAwake)
+        if (playOnStart)
             StartTweening();
     }
 

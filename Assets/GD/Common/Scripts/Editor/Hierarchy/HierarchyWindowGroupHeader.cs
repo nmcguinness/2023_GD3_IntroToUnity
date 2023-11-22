@@ -9,8 +9,9 @@ using UnityEditor;
 [InitializeOnLoad]
 public static class HierarchyWindowGroupHeader
 {
-    private static readonly Color folderFillColor = Color.yellow;
+    private static readonly Color folderFillColor = Color.blue;
     private static readonly string singleCharFolderDelimiter = "*";
+
     private static readonly string folderDelimiter = $"{singleCharFolderDelimiter}{singleCharFolderDelimiter}{singleCharFolderDelimiter}";
 
     static HierarchyWindowGroupHeader()
