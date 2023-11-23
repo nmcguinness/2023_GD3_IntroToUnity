@@ -4,26 +4,39 @@ using UnityEngine.Events;
 
 public class AdvancedTweenBehaviour : MonoBehaviour
 {
-    private Vector3 originalScale;
+    [Header("Scale Factor")]
     public float scaleFactor;
+
+    [Header("Scaling Up - Timing & Ease")]
     public float scaleUpDuration;
+
+    public Ease easeInCurve;// = AnimationCurve.Linear;
+
+    [Header("Delay Properties")]
+    public float delay = 1;
+
+    [Header("Scaling Down - Timing & Ease")]
     public float scaleDownDuration;
 
-    public AnimationCurve easeInCurve;// = AnimationCurve.Linear;
     public Ease easeOutCurve;
 
+    [Header("Tween Events")]
     public UnityEvent OnCycle;
+
+    private Vector3 originalScale;
+    private Vector3 scaleTo;
 
     private void Start()
     {
-        ScaleUp();
         originalScale = gameObject.transform.localScale;
+        scaleTo = originalScale * scaleFactor;
+
+        ScaleUp();
     }
 
     public void ScaleUp()
     {
-        gameObject.transform.DOBlendableScaleBy(
-            originalScale * scaleFactor,
+        gameObject.transform.DOScale(scaleTo,
             scaleUpDuration)
             .SetLoops(1, LoopType.Restart)
             .SetEase(easeInCurve)
@@ -32,11 +45,10 @@ public class AdvancedTweenBehaviour : MonoBehaviour
 
     private void ScaleDown()
     {
-        gameObject.transform.DOBlendableScaleBy(originalScale * -scaleFactor,
-            scaleDownDuration)
+        gameObject.transform.DOScale(originalScale, scaleDownDuration)
         .SetLoops(1, LoopType.Restart)
         .SetEase(easeOutCurve)
-        .SetDelay(1)
+        .SetDelay(delay)
         .OnComplete(() =>
         {
             OnCycle.Invoke();
