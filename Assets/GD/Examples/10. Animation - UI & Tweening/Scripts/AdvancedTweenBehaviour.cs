@@ -26,12 +26,16 @@ public class AdvancedTweenBehaviour : MonoBehaviour
     private Vector3 originalScale;
     private Vector3 scaleTo;
 
+    public bool playOnStart = true;
+    private bool isFirstCycleComplete = false;
+
     private void Start()
     {
         originalScale = gameObject.transform.localScale;
         scaleTo = originalScale * scaleFactor;
 
-        ScaleUp();
+        if (playOnStart)
+            ScaleUp();
     }
 
     public void ScaleUp()
@@ -51,7 +55,12 @@ public class AdvancedTweenBehaviour : MonoBehaviour
         .SetDelay(delay)
         .OnComplete(() =>
         {
-            OnCycle.Invoke();
+            if (!isFirstCycleComplete)
+            {
+                OnCycle?.Invoke();
+                isFirstCycleComplete = true;
+            }
+
             ScaleUp();
         });
     }
