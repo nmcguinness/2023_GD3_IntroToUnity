@@ -10,31 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27d9be7ad1597d14e9eb4a7382b197b1, type: 3}
-  m_Name: Dracula - Too Much At Stake
+  m_Name: My New Game
   m_EditorClassIdentifier: 
-  Title: Dracula - Too Much At Stake
+  Title: My New Game
   StartLevel: 0
   Levels:
-  - {fileID: 11400000, guid: a04d623251942154e858bee5ea606673, type: 2}
+  - {fileID: 11400000, guid: c6abd2219b96d8f4f90c43b36c37a837, type: 2}
   IsLevelLoaded: 0
   CurrentLevel: 0
   MainMenu: {fileID: 0}
   PauseMenu: {fileID: 0}
   UIMenu: {fileID: 0}
-  ProductOwner: Jane Honda
-  TeamLead: Mark Parks
-  TestLead: Lauren Apples
-  TeamMembers:
-  - Name: Bart Farmleigh
-    role:
-    - Department: 0
-      Role: 0
-    - Department: 1
-      Role: 4
-  - Name: Mark Sparks
-    role:
-    - Department: 2
-      Role: 8
+  ProductOwner: 
+  TeamLead: 
+  TestLead: 
+  TeamMembers: []
   Stage: 0
   StageDescription: Experimental stage for trying out ideas.
   RepositoryURL: 

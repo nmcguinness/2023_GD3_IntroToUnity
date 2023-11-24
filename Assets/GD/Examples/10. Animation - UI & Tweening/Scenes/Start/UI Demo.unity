@@ -684,7 +684,7 @@ MonoBehaviour:
   openAudioClip: {fileID: 8300000, guid: dca3084cb66e8824bab682c584bec504, type: 3}
   closeAudioClip: {fileID: 8300000, guid: d4007067d30a702478f8de23ab74795f, type: 3}
   translationDuration: 0.5
-  translationVector: {x: 0, y: -110}
+  translationVector: {x: 50, y: -110}
   translationEaseFunction: 4
   activationStateType: 3
 --- !u!82 &259978428

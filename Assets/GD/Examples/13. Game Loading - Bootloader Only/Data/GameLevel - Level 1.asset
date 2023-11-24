@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9076ab6fc12677346aaed9bac112ec26, type: 3}
-  m_Name: Level 1 - Escape the Lair
+  m_Name: GameLevel - Level 1
   m_EditorClassIdentifier: 
-  uniqueID: 7ef48c9a-2449-43ad-8ba7-92a6e85cac11
+  uniqueID: ae6fbda1-8cef-4876-9dca-9040b5cac8a0
   LastUpdated: 23/11/23 10:43:15
   LastUpdatedBy: 
   Notes: 
-  Description: Level 1 game scenes
+  Description: 
   Scenes:
-  - {fileID: 11400000, guid: bbc093685d1b81544840d281ff6f21a3, type: 2}
-  - {fileID: 11400000, guid: cce71d7534b67b649981afe7a0930827, type: 2}
-  Objectives:
-  - {fileID: 11400000, guid: 3628700cd89a2a04792e4ed8ddcfd467, type: 2}
-  - {fileID: 11400000, guid: ea0634114b5345845a490db3267aae8f, type: 2}
+  - {fileID: 11400000, guid: 5f270d5788dae45488e5f3b0ce068f9b, type: 2}
+  Objectives: []
   PostProcessPrefab: {fileID: 0}
   DefaultPostProcessProfile: {fileID: 0}
