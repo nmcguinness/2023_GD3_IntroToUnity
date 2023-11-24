@@ -6,8 +6,11 @@ using TMPro;
 public enum AxisAlignmentType : sbyte
 {
     Forward,
+    Backward,
     Up,
-    Right
+    Down,
+    Right,
+    Left
 }
 
 /// <summary>
@@ -43,8 +46,8 @@ public class TextQuadEditorWindow : EditorWindow
         }
 
         // Set size for the window
-        window.minSize = new Vector2(400f, 270f);
-        window.maxSize = new Vector2(600f, 270f);
+        window.minSize = new Vector2(400f, 280f);
+        window.maxSize = new Vector2(600f, 280f);
     }
 
     private void OnGUI()
@@ -70,6 +73,9 @@ public class TextQuadEditorWindow : EditorWindow
 
         // Dropdown for selecting font style
         fontStyle = (FontStyles)EditorGUILayout.EnumPopup("Font Style", fontStyle);
+
+        // Add space between fields
+        EditorGUILayout.Space();
 
         // Dropdown for selecting text alignment
         textAlignment = (TextAlignmentOptions)EditorGUILayout.EnumPopup("Text Alignment", textAlignment);
@@ -129,13 +135,14 @@ public class TextQuadEditorWindow : EditorWindow
         // Create a new quad with the specified name
         createdQuad = new GameObject(quadName);
 
-        // Match position
-        createdQuad.transform.position = targetObject.transform.position;
-
         // Match rotation based on the selected axis
         switch (axisAlignment)
         {
             case AxisAlignmentType.Forward:
+                createdQuad.transform.rotation = Quaternion.LookRotation(-1 * targetObject.transform.forward, targetObject.transform.up);
+                break;
+
+            case AxisAlignmentType.Backward:
                 createdQuad.transform.rotation = Quaternion.LookRotation(targetObject.transform.forward, targetObject.transform.up);
                 break;
 
@@ -143,7 +150,15 @@ public class TextQuadEditorWindow : EditorWindow
                 createdQuad.transform.rotation = Quaternion.LookRotation(-1 * targetObject.transform.up, targetObject.transform.forward);
                 break;
 
+            case AxisAlignmentType.Down:
+                createdQuad.transform.rotation = Quaternion.LookRotation(targetObject.transform.up, targetObject.transform.forward);
+                break;
+
             case AxisAlignmentType.Right:
+                createdQuad.transform.rotation = Quaternion.LookRotation(-1 * targetObject.transform.right, targetObject.transform.up);
+                break;
+
+            case AxisAlignmentType.Left:
                 createdQuad.transform.rotation = Quaternion.LookRotation(targetObject.transform.right, targetObject.transform.up);
                 break;
         }
@@ -172,11 +187,14 @@ public class TextQuadEditorWindow : EditorWindow
         // Automatically size the TextMeshPro component based on the content
         textMeshPro.autoSizeTextContainer = autoSizeFont;
 
+        // Set position
+        createdQuad.transform.position = targetObject.transform.position;
+
         // Parent the quad to the targetObject if specified
         if (parentToTarget)
         {
             //  createdQuad.transform.parent = targetObject.transform;
-            createdQuad.transform.SetParent(targetObject.transform, false);
+            createdQuad.transform.SetParent(targetObject.transform, true);
         }
 
         // Set the Scene view camera to focus on the new quad
@@ -198,6 +216,7 @@ public class TextQuadEditorWindow : EditorWindow
         if (SceneView.lastActiveSceneView != null)
         {
             SceneView.lastActiveSceneView.LookAt(targetObject.transform.position, SceneView.lastActiveSceneView.rotation, 5f);
+            Selection.activeObject = createdQuad;
         }
     }
 }

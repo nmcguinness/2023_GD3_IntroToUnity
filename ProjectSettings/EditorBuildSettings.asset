@@ -10,18 +10,18 @@ EditorBuildSettings:
       Scriptable Objects - Shared Variables.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/GD/Examples/13. Game Loading - Bootloader Only/Scenes/Start/BootLoader.unity
+    path: Assets/GD/Examples/14. Game Loading - Bootloader Only/Scenes/Start/BootLoader.unity
     guid: 93b2688ecc88e1844b879641660b75e6
   - enabled: 1
-    path: Assets/GD/Examples/13. Game Loading - Bootloader Only/Scenes/Start/Level
+    path: Assets/GD/Examples/14. Game Loading - Bootloader Only/Scenes/Start/Level
       1/Architecture.unity
     guid: edba2ed0ce369c649af098abd1712df9
   - enabled: 1
-    path: Assets/GD/Examples/13. Game Loading - Bootloader Only/Scenes/Start/Level
+    path: Assets/GD/Examples/14. Game Loading - Bootloader Only/Scenes/Start/Level
       1/Player.unity
     guid: c72d89332de9f4e46be56bd10d3bf435
   - enabled: 1
-    path: Assets/GD/Examples/13. Game Loading - Bootloader Only/Scenes/Buildings.unity
+    path: Assets/GD/Examples/14. Game Loading - Bootloader Only/Scenes/Buildings.unity
     guid: 4058e6c0bb67b0e40b90f7c963072c5c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
