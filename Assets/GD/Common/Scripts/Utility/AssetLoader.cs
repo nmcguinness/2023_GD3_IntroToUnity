@@ -8,7 +8,27 @@ namespace GD
     /// Used to load GameObject prefabs or ScriptableGameObjects from a specified folder
     /// </summary>
     public static class AssetLoader
+
     {
+        public static List<AudioClip> FindAudioClips(string folderPath, string filter = "t:AudioClip")
+        {
+            List<AudioClip> assetList = new List<AudioClip>();
+
+            // Get all asset paths in the specified folder
+            string[] assetPaths = AssetDatabase.FindAssets(filter, new[] { folderPath });
+
+            foreach (string assetPath in assetPaths)
+            {
+                // Load the prefab at the given path
+                AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>(AssetDatabase.GUIDToAssetPath(assetPath));
+
+                if (clip != null)
+                    assetList.Add(clip);
+            }
+
+            return assetList;
+        }
+
         public static List<GameObject> FindPrefabs(string folderPath, string filter = "t:Prefab")
         {
             List<GameObject> assetList = new List<GameObject>();
