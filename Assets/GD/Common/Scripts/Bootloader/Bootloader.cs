@@ -53,6 +53,9 @@ namespace GD
                 //instantiate and dont destroy if we load a new scene (i.e. persist across scenes)
                 var instance = Instantiate(corePrefab);
 
+                //set name
+                instance.name = corePrefab.name;
+
                 //dont destroy if we are running the game (i.e. not in Edit mode) and load a new scene (i.e. persist across scenes)
                 //      if (Application.isPlaying)
                 DontDestroyOnLoad(instance);
