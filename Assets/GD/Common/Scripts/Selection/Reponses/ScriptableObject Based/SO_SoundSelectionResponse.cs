@@ -29,5 +29,9 @@ namespace GD.Selection
 
             currentTransform = transform;
         }
+
+        public void OnSelect(Transform transform, RaycastHit hitInfo)
+        {
+        }
     }
 }

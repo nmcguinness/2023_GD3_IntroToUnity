@@ -28,5 +28,9 @@ namespace GD.Selection
             if (renderer != null && currentOriginalMaterial != null)
                 renderer.material = currentOriginalMaterial;
         }
+
+        public void OnSelect(Transform transform, RaycastHit hitInfo)
+        {
+        }
     }
 }

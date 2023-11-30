@@ -36,5 +36,9 @@ namespace GD.Selection
                 renderer.material = selectedMaterial;
             }
         }
+
+        public void OnSelect(Transform transform, RaycastHit hitInfo)
+        {
+        }
     }
 }

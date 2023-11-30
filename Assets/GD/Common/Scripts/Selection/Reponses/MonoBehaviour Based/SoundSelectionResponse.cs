@@ -19,5 +19,9 @@ namespace GD.Selection
                 AudioSource.PlayClipAtPoint(selectedAudioClip, transform.position);
             currentTransform = transform;
         }
+
+        public void OnSelect(Transform transform, RaycastHit hitInfo)
+        {
+        }
     }
 }

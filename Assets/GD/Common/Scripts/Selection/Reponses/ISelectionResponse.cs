@@ -6,6 +6,8 @@ namespace GD.Selection
     {
         void OnSelect(Transform transform);
 
+        void OnSelect(Transform transform, RaycastHit hitInfo);
+
         void OnDeselect(Transform transform);
     }
 }

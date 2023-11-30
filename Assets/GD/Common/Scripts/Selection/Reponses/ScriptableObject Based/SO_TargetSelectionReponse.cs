@@ -50,6 +50,10 @@ namespace GD.Selection
             }
         }
 
+        public void OnSelect(Transform transform, RaycastHit hitInfo)
+        {
+        }
+
         private void OnDestroy()
         {
             if (currentTargetInstance != null)

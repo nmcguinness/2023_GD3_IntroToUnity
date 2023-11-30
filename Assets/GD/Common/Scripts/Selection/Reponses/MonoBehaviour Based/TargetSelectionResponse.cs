@@ -46,5 +46,9 @@ namespace GD.Selection
         {
             currentTargetInstance.SetActive(false);
         }
+
+        public void OnSelect(Transform transform, RaycastHit hitInfo)
+        {
+        }
     }
 }

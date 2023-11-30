@@ -35,10 +35,11 @@ namespace GD
             "Meshes",
             "Prefabs",
             "Scripts",
-            "Scenes",
+            "Scenes/Start",
+             "Scenes/InProgress",
+              "Scenes/Completed",
             "Shaders",
-            "Textures",
-            "UI",
+            "Textures"
         };
 
             foreach (string folder in folders)
