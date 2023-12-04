@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_77a5d233ca4b4ef8b9624a35cf3f620c:
-        m_Texture: {fileID: 2800000, guid: 1cd36e46ce0706240bbef7f0a977ef8f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4a171443228681447acd9f7f89d8d6b9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -42,14 +42,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_0869c47b15fd432f979fbd85f4b95224: 0.45
-    - Vector1_5a4e72c830234f0eb375df8be3631ab0: -0.014
-    - Vector1_e814812f4e274caa839d746db0e3a3ea: 0.245
-    - _Alpha: 0.504
+    - Vector1_0869c47b15fd432f979fbd85f4b95224: 4.5
+    - Vector1_5a4e72c830234f0eb375df8be3631ab0: 0.17
+    - Vector1_e814812f4e274caa839d746db0e3a3ea: 0.001
+    - _Alpha: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - Color_b41e041c9d244ec1b401dd6fadf85d51: {r: 1.7696002, g: 1.9033991, b: 1.9607416,
+    - Color_b41e041c9d244ec1b401dd6fadf85d51: {r: 1.0520723, g: 1.0644281, b: 1.0671738,
         a: 0}
     - Vector2_96016efde78d444a8d363318d8655cfa: {r: 1, g: 1, b: 0, a: 0}
     - _Refraction_Displacement_Offset: {r: 0, g: 0, b: 0, a: 0}

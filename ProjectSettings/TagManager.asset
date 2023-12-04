@@ -9,6 +9,7 @@ TagManager:
   - Consumable
   - Selectable
   - SineDisplace
+  - Navigable
   layers:
   - Default
   - TransparentFX
@@ -19,12 +20,12 @@ TagManager:
   - Consumable
   - Interactable
   - Selectable
+  - 
+  - Architecture
   - Environment
   - Props
-  - Architecture
-  - Player
   - Lighting
-  - MuseTextureLayer
+  - Player
   - Refraction
   - 
   - 
