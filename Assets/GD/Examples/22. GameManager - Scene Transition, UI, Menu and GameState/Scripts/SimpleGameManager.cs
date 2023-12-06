@@ -62,10 +62,10 @@ namespace GD.Examples
                 throw new ArgumentNullException("corePrefabs has not been set!");
 
             // Load menu
-            mainMenu = LoadPersistentPrefabs(mainMenuPrefab);
+            mainMenu = LoadPersistentPrefab(mainMenuPrefab);
 
             // Load camera
-            mainCamera = LoadPersistentPrefabs(mainCameraPrefab).GetComponent<Camera>();
+            mainCamera = LoadPersistentPrefab(mainCameraPrefab).GetComponent<Camera>();
 
             // Add menu overlay camera to stack
             var mainMenuCamera = mainMenu.GetComponentInChildren<Camera>();
@@ -74,10 +74,11 @@ namespace GD.Examples
 
             // Load all the core system objects (camera, managers, etc.)
             foreach (var persistentObject in corePrefabs)
-                LoadPersistentPrefabs(persistentObject);
+                LoadPersistentPrefab(persistentObject);
 
             StartGame();
 
+            //is this true?
             isLoaded = true;
         }
 
@@ -86,7 +87,7 @@ namespace GD.Examples
         /// </summary>
         /// <param name="prefab">The prefab to load.</param>
         /// <returns>The instantiated object.</returns>
-        public GameObject LoadPersistentPrefabs(GameObject prefab)
+        public GameObject LoadPersistentPrefab(GameObject prefab)
         {
             if (prefab == null)
                 return null;
@@ -125,6 +126,8 @@ namespace GD.Examples
                 if (!SceneManager.GetSceneByName(scene.name).isLoaded)
                     SceneManager.LoadSceneAsync(scene.name, LoadSceneMode.Additive);
             }
+
+            //more stuff here...
         }
 
         /// <summary>
