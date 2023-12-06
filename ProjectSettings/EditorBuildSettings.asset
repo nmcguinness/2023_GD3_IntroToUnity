@@ -23,27 +23,38 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/GD/Examples/13. Game Loading - Bootloader Only/Scenes/Buildings.unity
     guid: 4058e6c0bb67b0e40b90f7c963072c5c
-  - enabled: 1
+  - enabled: 0
     path: Assets/GD/Examples/14. Game Loading - Scene Transition/Scenes/Start/Main.unity
     guid: 049022dd4a2933c459437697f41e498d
-  - enabled: 1
+  - enabled: 0
     path: Assets/GD/Examples/14. Game Loading - Scene Transition/Scenes/Start/Level
       1/Level 1 - Architecture.unity
     guid: 56e51bc2994840b498494672ce39452d
-  - enabled: 1
+  - enabled: 0
     path: Assets/GD/Examples/14. Game Loading - Scene Transition/Scenes/Start/Level
       1/Level 1 - Lights.unity
     guid: 3a48ed1027b4e6d45a75891d04f8bce3
-  - enabled: 1
+  - enabled: 0
     path: Assets/GD/Examples/14. Game Loading - Scene Transition/Scenes/Start/Level
       1/Level 1 - Pickups.unity
     guid: 48ba2eb6c04ad224b9683f721f5520f2
-  - enabled: 1
+  - enabled: 0
     path: Assets/GD/Examples/14. Game Loading - Scene Transition/Scenes/Start/Menu/Menu.unity
     guid: 816be6d7d9777d84082a1f147876260a
-  - enabled: 1
+  - enabled: 0
     path: Assets/GD/Examples/14. Game Loading - Scene Transition/Scenes/Start/Menu/UI.unity
     guid: c3eb415f5b828da4b8edfbd82f77170b
+  - enabled: 1
+    path: Assets/GD/Examples/22. GameManager - Scene Transition, UI, Menu and GameState/Scenes/Start/MainScene.unity
+    guid: ebaa2ceb2ccf6f6469b97f0b5a1387a5
+  - enabled: 1
+    path: Assets/GD/Examples/22. GameManager - Scene Transition, UI, Menu and GameState/Scenes/Start/Level
+      1.unity
+    guid: cf5d80dac756ad44d949ab312a12f127
+  - enabled: 1
+    path: Assets/GD/Examples/22. GameManager - Scene Transition, UI, Menu and GameState/Scenes/Start/Level
+      2.unity
+    guid: d148af20ef97a45469466a097d27e4af
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}

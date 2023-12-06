@@ -67,11 +67,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Normal_Strength: 2.84
+    - _Metallic: 0
+    - _Normal_Strength: 8
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Smoothness: 0.362
     - _UV_Rotation: 128
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Tiling: {r: 2, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []

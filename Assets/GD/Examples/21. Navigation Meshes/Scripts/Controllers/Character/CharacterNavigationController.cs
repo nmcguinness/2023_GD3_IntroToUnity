@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Supports click to select and click to set waypoint on a mav mesh
 /// </summary>
+/// <see cref="https://www.youtube.com/watch?v=u2EQtrdgfNs"/>
+/// <see cref="https://www.youtube.com/watch?v=dOI-N2QVly8"/>
 /// <see cref="https://www.youtube.com/watch?v=CHV1ymlw-P8"/>
 /// <seealso cref="https://www.youtube.com/watch?v=FkLJ45Pt-mY&t=158s"/>
 
@@ -71,6 +73,7 @@ namespace GD.Controllers
             if (selector.GetSelection() != null)
             {
                 hitInfo = selector.GetHitInfo();
+
                 SetDestination(hitInfo.point);
                 SetWaypoint();
                 SetSelected(false);
@@ -85,8 +88,8 @@ namespace GD.Controllers
         private void SetWaypoint()
         {
             waypointMarker.SetActive(true);
-            waypointMarker.transform.SetParent(sceneAnchor.transform);
             waypointMarker.transform.position = navMeshAgent.destination;
+            waypointMarker.transform.SetParent(sceneAnchor.transform);
         }
 
         /// <summary>
@@ -116,79 +119,80 @@ namespace GD.Controllers
         ///// Called when a player selects the on-screen player avatar
         ///// </summary>
         ///// <param name="context"></param>
-        //public void OnSelectPlayer(InputAction.CallbackContext context)
-        //{
-        //    if (context.action.triggered)
-        //    {
-        //        //if player is selected and we click and select a different player
-        //        if (currentlySelectedGameObject.Value != null
-        //            && currentlySelectedGameObject.Value != gameObject)
-        //        {
-        //            //de-select current
-        //            currentlySelectedGameObject.Value = null;
-        //            SetSelected(false);
-        //        }
+        public void OnSelectPlayer(InputAction.CallbackContext context)
+        {
+            if (context.action.triggered)
+            {
+                //if player is selected and we click and select a different player
+                if (currentlySelectedGameObject.Value != null
+                    && currentlySelectedGameObject.Value != gameObject)
+                {
+                    //de-select current
+                    currentlySelectedGameObject.Value = null;
+                    SetSelected(false);
+                }
 
-        //        //set selected new player object
-        //        SetSelected(true);
-        //        currentlySelectedGameObject.Value = gameObject;
-        //    }
-        //}
+                //set selected new player object
+                SetSelected(true);
+                currentlySelectedGameObject.Value = gameObject;
+            }
+        }
 
         ///// <summary>
         ///// Called when player selects a destination point on the navmesh
         ///// </summary>
         ///// <param name="context"></param>
-        //public void OnSelectWaypoint(InputAction.CallbackContext context)
-        //{
-        //    //if a player is selected then determine destination
-        //    if (isSelected)
-        //        ClickDestination();
-        //}
+        public void OnSelectWaypoint(InputAction.CallbackContext context)
+        {
+            //if a player is selected then determine destination
+            if (isSelected)
+                ClickDestination();
+        }
 
         /// <summary>
         /// Move selected player towards active destination point
         /// </summary>
-        //private void Update()
-        //{
-        //    if (isWalking && Vector3.Distance(navMeshAgent.destination, transform.position)
-        //        <= navMeshAgent.stoppingDistance)
-        //    {
-        //        ClearWaypoint();
-        //        isWalking = false;
-        //        animator.SetBool("IsWalking", isWalking);
-        //    }
-        //}
+        private void Update()
+        {
+            if (isWalking && Vector3.Distance(navMeshAgent.destination, transform.position)
+                <= navMeshAgent.stoppingDistance)
+            {
+                ClearWaypoint();
+                isWalking = false;
+                animator.SetBool("IsWalking", isWalking);
+            }
+        }
 
         #endregion NEW INPUT - Selection
 
         #region OLD INPUT - Selection
 
-        private void OnMouseDown()
-        {
-            if (currentlySelectedGameObject.Value != null && currentlySelectedGameObject.Value != gameObject)
-            {
-                currentlySelectedGameObject.Value = null;
-                SetSelected(false);
-            }
+        //private void OnMouseDown()
+        //{
+        //    if (currentlySelectedGameObject.Value != null
+        //        && currentlySelectedGameObject.Value != gameObject)
+        //    {
+        //        currentlySelectedGameObject.Value = null;
+        //        SetSelected(false);
+        //    }
 
-            SetSelected(true);
-            currentlySelectedGameObject.Value = gameObject;
-        }
+        //    SetSelected(true);
+        //    currentlySelectedGameObject.Value = gameObject;
+        //}
 
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(1) && isSelected)
-            {
-                ClickDestination();
-            }
+        //private void Update()
+        //{
+        //    if (Input.GetMouseButtonDown(1) && isSelected)
+        //    {
+        //        ClickDestination();
+        //    }
 
-            if (isWalking && Vector3.Distance(navMeshAgent.destination, transform.position) <= navMeshAgent.stoppingDistance)
-            {
-                ClearWaypoint();
-                animator.SetBool("IsWalking", false);
-            }
-        }
+        //    if (isWalking && Vector3.Distance(navMeshAgent.destination, transform.position) <= navMeshAgent.stoppingDistance)
+        //    {
+        //        ClearWaypoint();
+        //        animator.SetBool("IsWalking", false);
+        //    }
+        //}
 
         #endregion OLD INPUT - Selection
     }
