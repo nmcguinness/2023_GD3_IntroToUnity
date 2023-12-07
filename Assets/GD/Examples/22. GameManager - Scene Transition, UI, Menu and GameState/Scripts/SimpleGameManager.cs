@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using AsyncOperation = UnityEngine.AsyncOperation;
 using Object = UnityEngine.Object;
 
 namespace GD.Examples
@@ -18,10 +19,6 @@ namespace GD.Examples
         [SerializeField]
         [ReadOnly]
         private bool isLoaded = false;
-
-        [Header("Persistent Camera")]
-        [SerializeField]
-        private GameObject mainCameraPrefab;
 
         [Header("Persistent UI")]
         [SerializeField]
@@ -40,7 +37,6 @@ namespace GD.Examples
         private List<Object> scenesLevelOne;
 
         private GameObject mainMenu;
-        private Camera mainCamera;
 
         /// <summary>
         /// Start is called before the first frame update.
@@ -50,9 +46,6 @@ namespace GD.Examples
             // Don't start twice!
             if (isLoaded)
                 return;
-
-            // Set timescale to 0 to pause all dynamic elements
-            PauseGame();
 
             // Don't destroy if we are running the game (i.e., not in Edit mode)
             DontDestroyOnLoad(this);
@@ -64,18 +57,19 @@ namespace GD.Examples
             // Load menu
             mainMenu = LoadPersistentPrefab(mainMenuPrefab);
 
-            // Load camera
-            mainCamera = LoadPersistentPrefab(mainCameraPrefab).GetComponent<Camera>();
-
             // Add menu overlay camera to stack
-            var mainMenuCamera = mainMenu.GetComponentInChildren<Camera>();
-            if (mainMenuCamera != null)
-                mainCamera.GetUniversalAdditionalCameraData().cameraStack.Add(mainMenuCamera);
+            var menuCamera = mainMenu.GetComponentInChildren<Camera>();
+            if (menuCamera != null)
+                Camera.main.GetUniversalAdditionalCameraData().cameraStack.Add(menuCamera);
 
             // Load all the core system objects (camera, managers, etc.)
             foreach (var persistentObject in corePrefabs)
                 LoadPersistentPrefab(persistentObject);
 
+            // Set timescale to 0 to pause all dynamic elements
+            //  PauseGame();
+
+            // Start game
             StartGame();
 
             //is this true?
@@ -177,6 +171,11 @@ namespace GD.Examples
         private void Update()
         {
             // Handle input, e.g., escape key to show the menu
+        }
+
+        public void ShowDebug()
+        {
+            Debug.Log($"ShowDebug...");
         }
     }
 }

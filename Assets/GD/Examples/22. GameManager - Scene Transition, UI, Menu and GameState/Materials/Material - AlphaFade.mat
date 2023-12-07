@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_FadeInOutMaterial
+  m_Name: Material - AlphaFade
   m_Shader: {fileID: -6465566751694194690, guid: a29564fe01acaaf4c8a9c30181336164,
     type: 3}
   m_Parent: {fileID: 0}
@@ -38,7 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.1
+    - _Alpha: 0.18911535
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
