@@ -58,9 +58,6 @@ namespace GD
             //Convert string to hash to reduce overhead
             propertyID = Shader.PropertyToID(materialPropertyReference);
 
-            //Set to start point
-            material.SetFloat(propertyID, initialValue);
-
             StartCoroutine(Fade());
         }
 
@@ -76,7 +73,10 @@ namespace GD
             material.SetFloat(propertyID, initialValue);
             while (elapsedTime < fadeDuration)
             {
-                material.SetFloat(propertyID, Mathf.Lerp(initialValue, finalValue, easingCurve.Evaluate(elapsedTime / fadeDuration)));
+                material.SetFloat(propertyID,
+                    Mathf.Lerp(initialValue, finalValue,
+                    easingCurve.Evaluate(elapsedTime / fadeDuration)));
+
                 elapsedTime += Time.deltaTime;
                 yield return null; // Wait for the next frame
             }

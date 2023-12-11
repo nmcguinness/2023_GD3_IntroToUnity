@@ -1,7 +1,9 @@
-using System;
+using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using AsyncOperation = UnityEngine.AsyncOperation;
 using Object = UnityEngine.Object;
@@ -20,23 +22,64 @@ namespace GD.Examples
         [ReadOnly]
         private bool isLoaded = false;
 
+        [SerializeField]
+        [ReadOnly]
+        private bool isMenuVisible;
+
+        private string activeLevel;
+
+        #region UI & Menu
+
         [Header("Persistent UI")]
         [SerializeField]
-        private GameObject mainMenuPrefab;
-
-        [SerializeField]
-        private GameObject uiPrefab;
-
-        [Header("Persistent In-Game")]
-        [SerializeField]
-        [Tooltip("Spawns once to load objects that persist between scenes")]
-        private List<GameObject> corePrefabs;
-
-        [Header("Level 1")]
-        [SerializeField]
-        private List<Object> scenesLevelOne;
-
         private GameObject mainMenu;
+
+        [SerializeField]
+        private GameObject ui;
+
+        #endregion UI & Menu
+
+        [Space]
+
+        #region Levels
+
+        [SerializeField]
+        private string startLevel;
+
+        [SerializeField]
+        private Levels levels;
+
+        #endregion Levels
+
+        [Space]
+
+        #region Events
+
+        [FoldoutGroup("Events")]
+        [SerializeField]
+        private UnityEvent<float> OnLoadProgressUpdate;
+
+        [FoldoutGroup("Events")]
+        [SerializeField]
+        private UnityEvent<string> OnLoadComplete;
+
+        [FoldoutGroup("Events")]
+        [SerializeField]
+        private UnityEvent OnStart;
+
+        [FoldoutGroup("Events")]
+        [SerializeField]
+        private UnityEvent OnPause;
+
+        [FoldoutGroup("Events")]
+        [SerializeField]
+        private UnityEvent OnResume;
+
+        [FoldoutGroup("Events")]
+        [SerializeField]
+        private UnityEvent OnExit;
+
+        #endregion Events
 
         /// <summary>
         /// Start is called before the first frame update.
@@ -47,55 +90,11 @@ namespace GD.Examples
             if (isLoaded)
                 return;
 
-            // Don't destroy if we are running the game (i.e., not in Edit mode)
-            DontDestroyOnLoad(this);
+            // Load first level
+            StartCoroutine(LoadAllScenesAsync(startLevel));
 
-            // Check if corePrefabs is set
-            if (corePrefabs == null)
-                throw new ArgumentNullException("corePrefabs has not been set!");
-
-            // Load menu
-            mainMenu = LoadPersistentPrefab(mainMenuPrefab);
-
-            // Add menu overlay camera to stack
-            var menuCamera = mainMenu.GetComponentInChildren<Camera>();
-            if (menuCamera != null)
-                Camera.main.GetUniversalAdditionalCameraData().cameraStack.Add(menuCamera);
-
-            // Load all the core system objects (camera, managers, etc.)
-            foreach (var persistentObject in corePrefabs)
-                LoadPersistentPrefab(persistentObject);
-
-            // Set timescale to 0 to pause all dynamic elements
-            //  PauseGame();
-
-            // Start game
-            StartGame();
-
-            //is this true?
-            isLoaded = true;
-        }
-
-        /// <summary>
-        /// Loads a persistent prefab, instantiates it, and marks it as "Don't Destroy On Load."
-        /// </summary>
-        /// <param name="prefab">The prefab to load.</param>
-        /// <returns>The instantiated object.</returns>
-        public GameObject LoadPersistentPrefab(GameObject prefab)
-        {
-            if (prefab == null)
-                return null;
-
-            // Instantiate and don't destroy if we load a new scene (i.e., persist across scenes)
-            var instance = Instantiate(prefab);
-
-            // Set name
-            instance.name = prefab.name;
-
-            // Don't destroy if we are running the game (i.e., not in Edit mode) and load a new scene (i.e., persist across scenes)
-            DontDestroyOnLoad(instance);
-
-            return instance;
+            //show menu
+            isMenuVisible = true;
         }
 
         /// <summary>
@@ -103,41 +102,14 @@ namespace GD.Examples
         /// </summary>
         public void StartGame()
         {
-            LoadLevel(scenesLevelOne);
-        }
+            //TODO - replace with yield Wait
+            //while (!isLoaded)
+            //{
+            //}
 
-        /// <summary>
-        /// Loads a list of scenes asynchronously in additive mode.
-        /// </summary>
-        /// <param name="scenes">The list of scenes to load.</param>
-        public void LoadLevel(List<Object> scenes)
-        {
-            if (scenes.Count == 0)
-                return;
-
-            foreach (Object scene in scenes)
-            {
-                if (!SceneManager.GetSceneByName(scene.name).isLoaded)
-                    SceneManager.LoadSceneAsync(scene.name, LoadSceneMode.Additive);
-            }
-
-            //more stuff here...
-        }
-
-        /// <summary>
-        /// Unloads a list of scenes asynchronously.
-        /// </summary>
-        /// <param name="scenes">The list of scenes to unload.</param>
-        public void UnLoadLevel(List<Object> scenes)
-        {
-            if (scenes.Count == 0)
-                return;
-
-            foreach (Object scene in scenes)
-            {
-                if (SceneManager.GetSceneByName(scene.name).isLoaded)
-                    SceneManager.UnloadSceneAsync(scene.name);
-            }
+            Time.timeScale = 1;
+            OnStart?.Invoke();
+            isMenuVisible = false;
         }
 
         /// <summary>
@@ -145,6 +117,7 @@ namespace GD.Examples
         /// </summary>
         public void PauseGame()
         {
+            OnPause?.Invoke();
             Time.timeScale = 0;
         }
 
@@ -161,6 +134,7 @@ namespace GD.Examples
         /// </summary>
         public void ExitGame()
         {
+            OnExit?.Invoke();
             // Do other housekeeping here...
             Application.Quit();
         }
@@ -170,12 +144,113 @@ namespace GD.Examples
         /// </summary>
         private void Update()
         {
-            // Handle input, e.g., escape key to show the menu
+            ShowHideMenu();
         }
 
-        public void ShowDebug()
+        /// <summary>
+        /// F1 to show/hide menu
+        /// </summary>
+        private void ShowHideMenu()
         {
-            Debug.Log($"ShowDebug...");
+            // Handle input, e.g., escape key to show the menu
+            if (Input.GetKeyUp(KeyCode.F1))
+            {
+                if (!mainMenu.activeSelf)
+                {
+                    mainMenu.SetActive(true);
+                    PauseGame();
+                }
+                else
+                {
+                    mainMenu.SetActive(false);
+                    ContinueGame();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Stop all running coroutines e.g. scene loader
+        /// </summary>
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
+
+        /// <summary>
+        /// Loads a list of scenes asynchronously in additive mode.
+        /// </summary>
+        /// <param name="scenes">The list of scenes to load.</param>
+        /// <see cref="https://forum.unity.com/threads/issue-activating-multiple-scene-at-the-same-time-via-asyncoperation-allowsceneactivation.624604/"/>
+        public IEnumerator LoadAllScenesAsync(string level)
+        {
+            level = level.Trim();
+            if (!levels.Contents.ContainsKey(level))
+                yield return null;
+
+            var scenes = levels.Contents[level];
+
+            if (scenes.Count == 0)
+                yield return null;
+
+            List<AsyncOperation> asyncOperations = new List<AsyncOperation>();
+
+            foreach (Object scene in scenes)
+            {
+                if (!SceneManager.GetSceneByName(scene.name).isLoaded)
+                {
+                    AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene.name, LoadSceneMode.Additive);
+                    asyncOperations.Add(asyncOperation);
+                    asyncOperation.allowSceneActivation = false;
+                }
+            }
+
+            if (asyncOperations.Count != 0)
+            {
+                while (!asyncOperations.Select(op => op.isDone).Aggregate((l, r) => l & r))
+                {
+                    var progresses = asyncOperations.Select(op => op.progress).ToList();
+                    var lowestProgress = progresses.Aggregate((l, r) => l < r ? l : r);
+                    var normalizedProgress = progresses.Aggregate((l, r) => l + r) / progresses.Count;
+                    OnLoadProgressUpdate?.Invoke(normalizedProgress);
+
+                    if (lowestProgress >= 0.9f)
+                    {
+                        foreach (var asyncOp in asyncOperations)
+                        {
+                            asyncOp.allowSceneActivation = true;
+                        }
+                        progresses = asyncOperations.Select(op => op.progress).ToList();
+                        OnLoadProgressUpdate?.Invoke(progresses.Aggregate((l, r) => l + r) / progresses.Count);
+                    }
+                    yield return null;
+                }
+
+                isLoaded = true;
+                activeLevel = level;
+                OnLoadComplete?.Invoke(activeLevel);
+            }
+        }
+
+        /// <summary>
+        /// Unloads a list of scenes asynchronously.
+        /// </summary>
+        /// <param name="scenes">The list of scenes to unload.</param>
+        public void UnLoadLevel(string level)
+        {
+            level = level.Trim();
+            if (!levels.Contents.ContainsKey(level))
+                return;
+
+            var scenes = levels.Contents[level];
+
+            if (scenes.Count == 0)
+                return;
+
+            foreach (Object scene in scenes)
+            {
+                if (SceneManager.GetSceneByName(scene.name).isLoaded)
+                    SceneManager.UnloadSceneAsync(scene.name);
+            }
         }
     }
 }
