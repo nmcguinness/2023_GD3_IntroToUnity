@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using static Cinemachine.DocumentationSortingAttribute;
 using AsyncOperation = UnityEngine.AsyncOperation;
 using Object = UnityEngine.Object;
 
@@ -250,6 +251,25 @@ namespace GD.Examples
             {
                 if (SceneManager.GetSceneByName(scene.name).isLoaded)
                     SceneManager.UnloadSceneAsync(scene.name);
+            }
+        }
+
+        private void OnGUI()
+        {
+            Rect rect = new Rect(10, 10, 100, 25);
+
+            if (GUI.Button(rect, "Level 1"))
+            {
+                UnLoadLevel(activeLevel);
+                StartCoroutine(LoadAllScenesAsync("level 1"));
+            }
+
+            rect = new Rect(110, 10, 100, 25);
+
+            if (GUI.Button(rect, "Level 2"))
+            {
+                UnLoadLevel(activeLevel);
+                StartCoroutine(LoadAllScenesAsync("level 2"));
             }
         }
     }
