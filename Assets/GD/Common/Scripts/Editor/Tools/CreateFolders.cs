@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.WSA;
+using Application = UnityEngine.Application;
 
 namespace GD
 {
@@ -12,12 +15,19 @@ namespace GD
     /// <see cref="https://unity.com/how-to/organizing-your-project"/>
     public class CreateFolders : EditorWindow
     {
-        private static string projectName = "GD";
+        private static string projectName = "Type project name here...";
+        private static string folderPath;
+        private static bool generateMyAssets;
+        private static bool generateThirdPartyAssets;
 
         [MenuItem("Tools/DkIT/Utils/Create project folders...")]
         private static void ShowProjectPopup()
         {
             var window = GetWindow(typeof(CreateFolders));
+
+            window.minSize = new Vector2(300, 100);
+            window.maxSize = new Vector2(800, 100);
+
             var title = new GUIContent();
             title.text = "Create Project Folders";
             window.titleContent = title;
@@ -28,7 +38,8 @@ namespace GD
             List<string> folders = new List<string>
         {
             "Animations",
-            "Audio",
+            "Audio/Diegetic",
+            "Audio/Non Diegetic",
             "Data",
             "Editor",
             "Materials",
@@ -44,23 +55,84 @@ namespace GD
 
             foreach (string folder in folders)
             {
-                string fullPath = $"Assets/{projectName}/{folder}";
+                if (generateMyAssets)
+                    folderPath = $"Assets/{projectName}/My Assets/{folder}";
+                else
+                    folderPath = $"Assets/{projectName}/{folder}";
 
-                if (!Directory.Exists(fullPath))
+                if (!Directory.Exists(folderPath))
                 {
-                    Directory.CreateDirectory(fullPath);
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                if (generateThirdPartyAssets)
+                {
+                    folderPath = $"Assets/{projectName}/Third Party Assets/{folder}";
+
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
                 }
             }
 
             AssetDatabase.Refresh();
         }
 
+        private void OnEnable()
+        {
+            // Set the initial values to true
+            generateMyAssets = true;
+            generateThirdPartyAssets = true;
+
+            folderPath = $"Assets/{projectName}";
+        }
+
         private void OnGUI()
         {
-            projectName = EditorGUILayout.TextField("Project Name: ", projectName);
-            Repaint();
             GUILayout.Space(10);
+            // Begin a horizontal layout group for Project Name
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Project Name");
+            // Add flexible space to push the text field to the right
+            GUILayout.FlexibleSpace();
+            projectName = EditorGUILayout.TextField(projectName);
+            GUILayout.EndHorizontal();
+
+            // Begin a horizontal layout group
+            GUILayout.BeginHorizontal();
+            // Create a label for the checkbox
+            GUILayout.Label("Generate My Assets Folder");
+            // Add flexible space to push the text field to the right
+            // GUILayout.FlexibleSpace();
+            // Checkbox for Third Party Assets
+            generateMyAssets = EditorGUILayout.Toggle(generateMyAssets);
+            // End the horizontal layout group
+            GUILayout.EndHorizontal();
+
+            // Begin a horizontal layout group
+            GUILayout.BeginHorizontal();
+            // Create a label for the checkbox
+            GUILayout.Label("Generate Third Party Folder");
+            // Checkbox for Third Party Assets
+            generateThirdPartyAssets = EditorGUILayout.Toggle(generateThirdPartyAssets);
+            // End the horizontal layout group
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+
             if (GUILayout.Button("Create Folders"))
+                DoCreateAllFolders();
+        }
+
+        private void DoCreateAllFolders()
+        {
+            if (Directory.Exists($"Assets/{projectName}"))
+            {
+                // Show an error dialog if the project name already exists
+                EditorUtility.DisplayDialog("Error", $"Assets/{projectName} already exists!", "OK");
+            }
+            else
             {
                 CreateAllFolders();
                 Close();
